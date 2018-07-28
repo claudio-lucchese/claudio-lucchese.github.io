@@ -2,10 +2,10 @@
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
 <head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Polarized User and Topic Tracking in Twitter</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -96,16 +96,16 @@ class="cmr-12">Mauro Coletto, IMT Institute for Advanced Studies, Lucca and HPC 
 class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />                 <span 
 class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
-class="cmr-12">� Ca&#8217; Foscari Venezia, Italy</span>
+class="cmr-12">à Ca&#x2019; Foscari Venezia, Italy</span>
 <br />                       <span 
-class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+class="cmr-12">Raﬀaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
 <div class="date" ><span 
 class="cmr-12">Mar. 31 2016</span></div>
    </div>
 <!--l. 9--><p class="indent" >   Short paper accepted at <span 
-class="cmbx-10">SIGIR &#8217;16: ACM Conference on Research and</span>
+class="cmbx-10">SIGIR &#x2019;16: ACM Conference on Research and</span>
 <span 
-class="cmbx-10">Development in Information Retrieval</span>&#x00A0;<span class="cite">[<a 
+class="cmbx-10">Development in Information Retrieval</span> <span class="cite">[<a 
 href="#Xsigir16-polarized">1</a>]</span>.
 <!--l. 12--><p class="indent" >   <span 
 class="cmbx-10">Abstract. </span>Digital traces of conversations in micro-blogging platforms
@@ -114,14 +114,14 @@ resolution. These information sources can be exploited to understand and
 monitor collective behaviors. In this work, we focus on <span 
 class="cmti-10">polarization classes</span>, i.e.,
 those topics that require the user to side exclusively with one position. The
-proposed method provides an iterative classification of users and keywords: first,
+proposed method provides an iterative classiﬁcation of users and keywords: ﬁrst,
 <span 
-class="cmti-10">polarized users </span>are identified, then <span 
+class="cmti-10">polarized users </span>are identiﬁed, then <span 
 class="cmti-10">polarized keywords </span>are discovered by
-monitoring the activities of previously classified users. This method thus allows to
+monitoring the activities of previously classiﬁed users. This method thus allows to
 track users and topics over time. We report several experiments conducted
 on two Twitter datasets during political election time-frames. We measure
-the user classification accuracy on a golden set of users and we provide an
+the user classiﬁcation accuracy on a golden set of users and we provide an
 analysis of the relevance of the extracted keywords for the ongoing political
 discussion.
    <h3 class="likesectionHead"><a 
@@ -130,10 +130,10 @@ class="cmcsc-10">PTR </span>algorithm</h3>
 <!--l. 29--><p class="noindent" >Our method requires some initial <span 
 class="cmti-10">seed topics </span>that identify the classes of interests. We
 propose to identify them with a single textual keyword for each class. Although each
-keyword identifies a topic, e.g., a political party, it is not sufficient to correctly
+keyword identiﬁes a topic, e.g., a political party, it is not suﬃcient to correctly
 classify users.
 <!--l. 33--><p class="indent" >   The Polarization TRacker (<span 
-class="cmcsc-10">PTR</span>) algorithm iterates the two classification steps,
+class="cmcsc-10">PTR</span>) algorithm iterates the two classiﬁcation steps,
 namely <span 
 class="cmcsc-10">U<span 
 class="small-caps">s</span><span 
@@ -155,17 +155,17 @@ class="small-caps">l</span><span
 class="small-caps">a</span><span 
 class="small-caps">s</span><span 
 class="small-caps">s</span></span>, that continuously improve the
-classification into polarization classes of users and of the hashtags they used. The
-goal of the first step is to identify polarized users on the basis of the given hashtags.
+classiﬁcation into polarization classes of users and of the hashtags they used. The
+goal of the ﬁrst step is to identify polarized users on the basis of the given hashtags.
 First, we identify polarized tweets, which mention seed hashtags. We discard all of
 those tweets which contain hashtags belonging to more than one polirized class. We
                                                                   
 
                                                                   
 thus measure the user polarization, i.e., if for a polarization class, the number of
-tweets by a user is significantly larger than for any other class, then the user is
+tweets by a user is signiﬁcantly larger than for any other class, then the user is
 labeled with the corresponding class. The goal the second step is to process
-all the hashtags adopted by classified users in order to discover a new set
+all the hashtags adopted by classiﬁed users in order to discover a new set
 of discriminating hashtags. We take into considerations all the hashtags
 used, and not only those occurring in the polarized tweets as in the previous
 step. This allows to extend our analysis to the full set of topics discussed
@@ -175,7 +175,7 @@ algorithm.
    <h3 class="likesectionHead"><a 
  id="x1-2000"></a>Evaluation</h3>
 <!--l. 56--><p class="noindent" >We built an evaluation dataset by identifying those users whose opinion can be
-inferred with high confidence. During elections, as for other events, very specific
+inferred with high conﬁdence. During elections, as for other events, very speciﬁc
 hashtags are used over Twitter to express a strong intention of vote or an explicit
 membership in a group. We assume that users that frequently use one of such
 hashtags are strongly sided with one of the competing parties and they will not
@@ -184,11 +184,11 @@ class="cmti-10">golden hashtags</span>, were
 handpicked among the 500 most frequent in the data. The used golden hashtags are
 of the kind <span 
 class="cmtt-10">#i-vote-party</span>.
-<!--l. 66--><p class="indent" >   This evaluation dataset id used to evaluate the user classification accuracy of the
+<!--l. 66--><p class="indent" >   This evaluation dataset id used to evaluate the user classiﬁcation accuracy of the
 proposed algorithm. Experimental results show that the <span 
 class="cmmi-10">F</span>-measure achieved by the
 proposed <span 
-class="cmcsc-10">PTR </span>provides an overall improvement w.r.t.&#x00A0;the <span 
+class="cmcsc-10">PTR </span>provides an overall improvement w.r.t. the <span 
 class="cmmi-10">k</span>-means baseline of +71%
 and +7% on datasets IT13 and EU14 respectively.
    <div class="btSect">
@@ -198,10 +198,10 @@ and +7% on datasets IT13 and EU14 respectively.
  id="x1-3000doc"></a>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
- id="Xsigir16-polarized"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raffaele Perego.
+ [1]<span class="bibsp">   </span></span><a 
+ id="Xsigir16-polarized"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raﬀaele Perego.
    Polarized user and topic tracking in twitter. In <span 
-class="cmti-10">SIGIR &#8217;16: Proceedings of the</span>
+class="cmti-10">SIGIR &#x2019;16: Proceedings of the</span>
    <span 
 class="cmti-10">39th International ACM SIGIR Conference on Research and Development in</span>
    <span 

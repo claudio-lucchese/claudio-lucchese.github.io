@@ -2,10 +2,10 @@
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
 <head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Supervised Evaluation of Top-k Itemset Mining Algorithms</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -95,14 +95,14 @@ Algorithms</h2>
 class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br /><span 
 class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
-class="cmr-12">� Ca&#8217; Foscari Venezia, Italy</span>
+class="cmr-12">à Ca&#x2019; Foscari Venezia, Italy</span>
 <br />       <span 
-class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+class="cmr-12">Raﬀaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
 <div class="date" ><span 
 class="cmr-12">May. 20 2015</span></div>
    </div>
 <!--l. 8--><p class="indent" >   Accepted at <span 
-class="cmbx-10">DAWAK &#8217;15: 17th International Conference on Data</span>
+class="cmbx-10">DAWAK &#x2019;15: 17th International Conference on Data</span>
 <span 
 class="cmbx-10">Warehousing and Knowledge Discovery </span><span class="cite">[<a 
 href="#Xdawak15">1</a>]</span>.
@@ -125,7 +125,7 @@ class="cmcsc-10">P<span
 class="small-caps">a</span>ND<span 
 class="small-caps">a</span></span><span 
 class="cmr-7">+</span>  performs best in the majority of the cases, since the
-classifiers built over the mined patterns used as dataset features are the most
+classiﬁers built over the mined patterns used as dataset features are the most
 accurate.
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Evaluation methodology</h3>
@@ -137,25 +137,25 @@ class="cmti-10">supervised evaluation</span>
 class="cmti-10">methodology </span>of the extracted top-<span 
 class="cmmi-10">k </span>patterns that measures and compares the ability
 of each algorithm in discovering interesting features that we can use to train accurate
-classifier.
+classiﬁer.
                                                                   
 
                                                                   
 <!--l. 35--><p class="indent" >   Each binary UCI dataset, from which the class labels is removed in advance, is
-first subdivided into training and test set. We employ three state-of-the-art
-algorithms, to extract a distinct a pattern set &#x03A0;<sub><span 
+ﬁrst subdivided into training and test set. We employ three state-of-the-art
+algorithms, to extract a distinct a pattern set Π<sub><span 
 class="cmmi-7">k</span></sub> from the training set. Then, every
 transaction in the training and test sets is mapped into the pattern space by
-considering a binary feature for each approximate pattern in &#x03A0;<sub><span 
+considering a binary feature for each approximate pattern in Π<sub><span 
 class="cmmi-7">k</span></sub> indicating its
 presence/absence in the transaction. Note that the algorithms we evaluated produce,
 for each pattern <span 
-class="cmsy-10">&#x27E8;</span><span 
+class="cmsy-10">⟨</span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">I</span></sub><span 
 class="cmmi-10">,P</span><sub><span 
 class="cmmi-7">T</span></sub><span 
-class="cmsy-10">&#x27E9;&#x2208; </span>&#x03A0;<sub><span 
+class="cmsy-10">⟩∈ </span>Π<sub><span 
 class="cmmi-7">k</span></sub>, the set of transactions <span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">T</span></sub> in the training where <span 
@@ -164,40 +164,40 @@ class="cmmi-7">I</span></sub>
 it occurs, and this set is used for the mapping. For what regards the test
 set, we say that an approximate pattern <span 
 class="cmmi-10">P </span><span 
-class="cmsy-10">&#x2208; </span>&#x03A0;<sub><span 
+class="cmsy-10">∈ </span>Π<sub><span 
 class="cmmi-7">k</span></sub> occurs in an unseen test
 transaction <span 
 class="cmmi-10">t </span><span 
-class="cmti-10">iff </span><span 
+class="cmti-10">iﬀ </span><span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">I</span></sub> <span 
-class="cmsy-10">&#x2229; </span><span 
+class="cmsy-10">∩ </span><span 
 class="cmmi-10">t</span><span 
 class="cmsy-10">|</span><span 
-class="cmmi-10">&#x2215;</span><span 
+class="cmmi-10">∕</span><span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">I</span></sub><span 
-class="cmsy-10">|&#x2265; </span><span 
-class="cmmi-10">&#x03B7;</span>, where <span 
-class="cmmi-10">&#x03B7; </span>is the minimum intersection
+class="cmsy-10">|≥ </span><span 
+class="cmmi-10">η</span>, where <span 
+class="cmmi-10">η </span>is the minimum intersection
 ratio <span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">I</span></sub> <span 
-class="cmsy-10">&#x2229; </span><span 
+class="cmsy-10">∩ </span><span 
 class="cmmi-10">t</span><sup><span 
-class="cmsy-7">*</span></sup><span 
+class="cmsy-7">∗</span></sup><span 
 class="cmsy-10">|</span><span 
-class="cmmi-10">&#x2215;</span><span 
+class="cmmi-10">∕</span><span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">I</span></sub><span 
 class="cmsy-10">| </span>for every training transaction <span 
 class="cmmi-10">t</span><sup><span 
-class="cmsy-7">*</span></sup><span 
-class="cmsy-10">&#x2208; </span><span 
+class="cmsy-7">∗</span></sup><span 
+class="cmsy-10">∈ </span><span 
 class="cmmi-10">P</span><sub><span 
 class="cmmi-7">T</span></sub>. The rationale is
 to accept a pattern <span 
@@ -207,14 +207,14 @@ noise than what it has been observed in the training set. After mapping the
 transactions into such pattern space, the class labels are restored in the
 transformed training and test sets. The training set is thus used to train
 an <span 
-class="cmcsc-10">SVM </span>classifier. Finally, the classifier is evaluated on the mapped test
+class="cmcsc-10">SVM </span>classiﬁer. Finally, the classiﬁer is evaluated on the mapped test
 set.
 <!--l. 55--><p class="indent" >   Results show that <span 
 class="cmcsc-10">P<span 
 class="small-caps">a</span>ND<span 
 class="small-caps">a</span></span><span 
 class="cmr-7">+</span> outperforms all the other algorithms with a
-statistically significant improvement.
+statistically signiﬁcant improvement.
    <div class="btSect">
    <h3 class="likesectionHead"><a 
  id="x1-2000"></a>References</h3>
@@ -222,10 +222,10 @@ statistically significant improvement.
  id="x1-2000doc"></a>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
- id="Xdawak15"></a>Claudio Lucchese, Salvatore Orlando, and Raffaele Perego. Supervised
+ [1]<span class="bibsp">   </span></span><a 
+ id="Xdawak15"></a>Claudio Lucchese, Salvatore Orlando, and Raﬀaele Perego. Supervised
    evaluation of top-k itemset mining algorithms.  In <span 
-class="cmti-10">DAWAK &#8217;15: 17th</span>
+class="cmti-10">DAWAK &#x2019;15: 17th</span>
    <span 
 class="cmti-10">International Conference on Data Warehousing and Knowledge Discovery</span>,
    2015.

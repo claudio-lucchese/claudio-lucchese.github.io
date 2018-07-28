@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
-<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Quality versus efficiency in document scoring with learning-to-rank models</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Quality versus eﬃciency in document scoring with learning-to-rank models</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -89,68 +89,68 @@ class="small-caps">e</span></span></a></li></ul>
 
                                                                   
 
-<h2 class="titleHead">Quality versus efficiency in document scoring
+<h2 class="titleHead">Quality versus eﬃciency in document scoring
 with learning-to-rank models</h2>
 <div class="author" > <span 
 class="cmr-12">Gabriele Capannini, Innovation Design och Teknik (IDT), M</span><span 
-class="cmr-12">�lardalens h</span><span 
-class="cmr-12">�gskola, V</span><span 
-class="cmr-12">�steras, Sweden</span>
+class="cmr-12">älardalens h</span><span 
+class="cmr-12">ögskola, V</span><span 
+class="cmr-12">ästeras, Sweden</span>
 <br />                       <span 
 class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />                     <span 
 class="cmr-12">Franco Maria Nardini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />                  <span 
 class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
-class="cmr-12">� Ca&#8217; Foscari Venezia, Italy</span>
+class="cmr-12">à Ca&#x2019; Foscari Venezia, Italy</span>
 <br />                        <span 
-class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+class="cmr-12">Raﬀaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />                       <span 
 class="cmr-12">Nicola Tonellotto, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
 <div class="date" ><span 
 class="cmr-12">May 18 2016</span></div>
    </div>
 <!--l. 9--><p class="indent" >   Journal paper accepted at <span 
-class="cmbx-10">Information Processing &amp; Management</span>&#x00A0;<span class="cite">[<a 
+class="cmbx-10">Information Processing &#x0026; Management</span> <span class="cite">[<a 
 href="#Xipm16">1</a>]</span>.
 <!--l. 11--><p class="indent" >   <span 
 class="cmbx-10">Abstract. </span>Learning-to-Rank (LtR) techniques leverage machine learning
 algorithms and large amounts of training data to induce high-quality ranking
 functions. Given a set of documents and a user query, these functions are able
 to precisely predict a score for each of the documents, in turn exploited
-to effectively rank them. Although the scoring efficiency of LtR models is
+to eﬀectively rank them. Although the scoring eﬃciency of LtR models is
 critical in several applications - e.g., it directly impacts on response time and
-throughput of Web query processing  it has received relatively little attention so
+throughput of Web query processing – it has received relatively little attention so
 far.
-<!--l. 14--><p class="indent" >   The goal of this work is to experimentally investigate the scoring efficiency of LtR
-models along with their ranking quality. Specifically, we show that machine-learned
-ranking models exhibit a quality versus efficiency trade-off. For example, each family
-of LtR algorithms has tuning parameters that can influence both effectiveness and
-efficiency, where higher ranking quality is generally obtained with more complex and
+<!--l. 14--><p class="indent" >   The goal of this work is to experimentally investigate the scoring eﬃciency of LtR
+models along with their ranking quality. Speciﬁcally, we show that machine-learned
+ranking models exhibit a quality versus eﬃciency trade-oﬀ. For example, each family
+of LtR algorithms has tuning parameters that can inﬂuence both eﬀectiveness and
+eﬃciency, where higher ranking quality is generally obtained with more complex and
 expensive models. Moreover, LtR algorithms that learn complex models, such as
 those based on forests of regression trees, are generally more expensive and more
-effective than other algorithms that induce simpler models like linear combination of
+eﬀective than other algorithms that induce simpler models like linear combination of
 features.
-<!--l. 16--><p class="indent" >   We extensively analyze the quality versus efficiency trade-off of a wide spectrum
+<!--l. 16--><p class="indent" >   We extensively analyze the quality versus eﬃciency trade-oﬀ of a wide spectrum
 of state-of-the-art LtR, and we propose a sound methodology to devise the
-most effective ranker given a time budget. To guarantee reproducibility, we
+most eﬀective ranker given a time budget. To guarantee reproducibility, we
 used publicly available datasets and we contribute an open source C++
 framework providing optimized, multi-threaded implementations of the most
-effective tree-based learners: Gradient Boosted Regression Trees (GBRT),
+eﬀective tree-based learners: Gradient Boosted Regression Trees (GBRT),
 Lambda-Mart (<span 
-class="cmmi-10">&#x03BB;</span>-MART), and the first public-domain implementation of Oblivious
+class="cmmi-10">λ</span>-MART), and the ﬁrst public-domain implementation of Oblivious
                                                                   
 
                                                                   
-Lambda-Mart (&#x03A9;<sub><span 
-class="cmmi-7">&#x03BB;</span></sub>-MART), an algorithm that induces forests of oblivious regression
+Lambda-Mart (Ω<sub><span 
+class="cmmi-7">λ</span></sub>-MART), an algorithm that induces forests of oblivious regression
 trees.
-<!--l. 18--><p class="indent" >   We investigate how the different training parameters impact on the quality versus
-efficiency trade-off, and provide a thorough comparison of several algorithms
+<!--l. 18--><p class="indent" >   We investigate how the diﬀerent training parameters impact on the quality versus
+eﬃciency trade-oﬀ, and provide a thorough comparison of several algorithms
 in the quality-cost space. The experiments conducted show that there is
 not an overall best algorithm, but the optimal choice depends on the time
 budget.
-<!--l. 20--><p class="indent" >   The source code of algorithms&#8217; implementations is made available as part of
+<!--l. 20--><p class="indent" >   The source code of algorithms&#x2019; implementations is made available as part of
 <span 
 class="cmcsc-10">Q<span 
 class="small-caps">u</span><span 
@@ -169,11 +169,11 @@ class="cmtt-10">http://quickrank.isti.cnr.it/</span></a>.
  id="x1-1000doc"></a>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
- id="Xipm16"></a>Gabriele Capannini, Claudio Lucchese, Franco&#x00A0;Maria Nardini, Salvatore
-   Orlando, Raffaele Perego, and Nicola Tonellotto. Quality versus efficiency in
+ [1]<span class="bibsp">   </span></span><a 
+ id="Xipm16"></a>Gabriele Capannini, Claudio Lucchese, Franco Maria Nardini, Salvatore
+   Orlando, Raﬀaele Perego, and Nicola Tonellotto. Quality versus eﬃciency in
    document scoring with learning-to-rank models. <span 
-class="cmti-10">Information Processing &amp;</span>
+class="cmti-10">Information Processing &#x0026;</span>
    <span 
 class="cmti-10">Management</span>, 2016.
 </p>

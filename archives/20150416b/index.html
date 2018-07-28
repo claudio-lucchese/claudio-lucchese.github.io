@@ -2,10 +2,10 @@
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
 <head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Speeding up Document Ranking with Rank-based Features</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -97,9 +97,9 @@ class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 class="cmr-12">Franco Maria Nardini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br /><span 
 class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
-class="cmr-12">� Ca&#8217; Foscari Venezia, Italy</span>
+class="cmr-12">à Ca&#x2019; Foscari Venezia, Italy</span>
 <br />       <span 
-class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+class="cmr-12">Raﬀaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />      <span 
 class="cmr-12">Nicola Tonellotto, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
 <div class="date" ><span 
@@ -110,11 +110,11 @@ class="cmbx-10">38th International ACM SIGIR Conference</span>
 <span 
 class="cmbx-10">on Research and Development in Information Retrieval, Santiago de</span>
 <span 
-class="cmbx-10">Chile, 9&#8211;13 August 2015 </span><span class="cite">[<a 
+class="cmbx-10">Chile, 9–13 August 2015 </span><span class="cite">[<a 
 href="#Xsigir15short">1</a>]</span>.
 <!--l. 12--><p class="indent" >   <span 
 class="cmbx-10">Abstract. </span>Learning to Rank (<span 
-class="cmss-10">LtR</span>) is an effective machine learning methodology
+class="cmss-10">LtR</span>) is an eﬀective machine learning methodology
 for inducing high-quality document ranking functions. Given a query and a candidate
 set of documents, where query-document pairs are represented by feature
 vectors, a machine-learned function is used to reorder this set. In this paper
@@ -125,7 +125,7 @@ are derived as a function of the query- document pair and the full set of
 candidate documents to score, rank-based features provide additional information
 to better rank documents and return the most relevant ones. We report
 a comprehensive evaluation showing that rank-based features allow us to
-achieve the desired effectiveness with ranking models being up to 3<span 
+achieve the desired eﬀectiveness with ranking models being up to 3<span 
 class="cmmi-10">.</span>5 times
 smaller than models not using them, with a scoring time reduction up to
 70%.
@@ -142,7 +142,7 @@ smaller than models not using them, with a scoring time reduction up to
 
                                                                   
  <div class="caption" 
-><span class="id">Table&#x00A0;1: </span><span  
+><span class="id">Table 1: </span><span  
 class="content">A small example of golden set for learning to rank.</span></div><!--tex4ht:label?: x1-10011 -->
 <div class="tabular"> <table id="TBL-2" class="tabular" 
 cellspacing="0" cellpadding="0" rules="groups" 
@@ -278,73 +278,72 @@ class="td11">  </td></tr></table></div>
    </div>
 <!--l. 45--><p class="indent" >   To introduce the new set of <span 
 class="cmti-10">rank-based </span>features, let us consider the example in
-Table&#x00A0;<a 
+Table <a 
 href="#x1-10011">1<!--tex4ht:ref: tab:toy --></a>. The table illustrates a small training set of query-document feature vectors.
 It is made up of three queries with four candidate results each. For each document
 associated with a query, a binary relevance label <span 
-class="cmmi-10">rel </span>and two well-known features &#8211;
-BM25 and PageRank (PR) &#8211; are listed. During learning, a tree-based algorithm
-should find the rules that best separate relevant from irrelevant results. A simple
-decision stump &#8211; i.e., a tree with one node and two leaves &#8211; is not sufficient in
-this case, since a &#8220;minimal&#8221; classification tree with perfect accuracy is the
+class="cmmi-10">rel </span>and two well-known features –
+BM25 and PageRank (PR) – are listed. During learning, a tree-based algorithm
+should ﬁnd the rules that best separate relevant from irrelevant results. A simple
+decision stump – i.e., a tree with one node and two leaves – is not suﬃcient in
+this case, since a “minimal” classiﬁcation tree with perfect accuracy is the
 following:
 <!--l. 58--><p class="noindent" ><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;         </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9">          </span><span 
 class="cmtt-9">if</span> <span 
 class="cmr-9">BM25</span> <span 
-class="cmsy-9">&#x2265; </span><span 
+class="cmsy-9">≥ </span><span 
 class="cmmi-9">.</span><span 
 class="cmr-9">75  </span><span 
 class="cmtt-9">then </span><span 
 class="cmr-9">1  </span><span 
 class="cmtt-9">else</span><br 
 class="newline" /><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;                 </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9">                  </span><span 
 class="cmtt-9">if</span> <span 
 class="cmr-9">PR</span> <span 
-class="cmsy-9">&#x2265; </span><span 
+class="cmsy-9">≥ </span><span 
 class="cmmi-9">.</span><span 
 class="cmr-9">45  </span><span 
 class="cmtt-9">then </span><span 
 class="cmr-9">1  </span><span 
 class="cmtt-9">else </span><br 
 class="newline" /><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;                        </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9">                         </span><span 
 class="cmtt-9">if</span> <span 
 class="cmr-9">BM25</span> <span 
-class="cmsy-9">&#x2265; </span><span 
+class="cmsy-9">≥ </span><span 
 class="cmmi-9">.</span><span 
 class="cmr-9">67  </span><span 
 class="cmtt-9">then </span><span 
 class="cmr-9">1  </span><span 
 class="cmtt-9">else </span><span 
 class="cmr-9">0</span>
-<!--l. 64--><p class="indent" >   Simpler but still effective trees can be obtained if we enrich the feature set
+<!--l. 64--><p class="indent" >   Simpler but still eﬀective trees can be obtained if we enrich the feature set
 associated with each pair (<span 
 class="cmmi-10">q,c</span>), <span 
 class="cmmi-10">c </span><span 
-class="cmsy-10">&#x2208;<img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">∈𝒞</span><sub><span 
 class="cmmi-7">q</span></sub>, with new <span 
 class="cmti-10">rank-based </span>features. In
 our toy example, an optimal decision tree that achieves perfect accuracy is
-the one that classifies as relevant the documents with a PR score being
+the one that classiﬁes as relevant the documents with a PR score being
 at most 0.05 less than the best PR score in the same candidate set, that
 is:
 <!--l. 70--><p class="noindent" ><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;</span><span 
-class="cmr-9">&#x00A0;         </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9"> </span><span 
+class="cmr-9">          </span><span 
 class="cmtt-9">if </span><span 
 class="cmcsc-10x-x-90">D<span 
 class="small-caps">i</span><span 
@@ -353,7 +352,7 @@ class="small-caps">t</span>-M<span
 class="small-caps">a</span><span 
 class="small-caps">x</span></span> <sub><span 
 class="cmr-6">PR</span></sub> <span 
-class="cmsy-9">&#x2264; </span><span 
+class="cmsy-9">≤ </span><span 
 class="cmr-9">0</span><span 
 class="cmmi-9">.</span><span 
 class="cmr-9">05 </span><span 
@@ -368,25 +367,22 @@ class="small-caps">s</span><span
 class="small-caps">t</span>-M<span 
 class="small-caps">a</span><span 
 class="small-caps">x</span></span> <sub><span 
-class="cmr-7">PR</span></sub> measures the difference between each value of PR and the
+class="cmr-7">PR</span></sub> measures the diﬀerence between each value of PR and the
 largest value assumed by PR in <span 
-class="cmsy-10"><img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
-class="cmmi-7">q</span></sub>. This last classifier does not improve the quality of
-the first one. On the other hand, it is much simpler and its evaluation requires much
+class="cmsy-10">𝒞</span><sub><span 
+class="cmmi-7">q</span></sub>. This last classiﬁer does not improve the quality of
+the ﬁrst one. On the other hand, it is much simpler and its evaluation requires much
 less time if <span 
 class="cmti-10">rank-based </span>features are available.
 <!--l. 76--><p class="indent" >   We propose four construction strategies to build new <span 
 class="cmti-10">rank-based features </span>for a
 given feature <span 
 class="cmmi-10">f </span><span 
-class="cmsy-10">&#x2208;<img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span>, occurring in the feature vector representing each pair (<span 
+class="cmsy-10">∈ℱ</span>, occurring in the feature vector representing each pair (<span 
 class="cmmi-10">q,c</span>),
 where <span 
 class="cmmi-10">c </span><span 
-class="cmsy-10">&#x2208;<img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">∈𝒞</span><sub><span 
 class="cmmi-7">q</span></sub>:
      <ul class="itemize1">
      <li class="itemize"><span 
@@ -400,20 +396,18 @@ class="small-caps">a</span><span
 class="small-caps">n</span><span 
 class="small-caps">k</span></span> <sub><span 
 class="cmmi-7">f</span></sub> <span 
-class="cmsy-10">&#x2208; {</span>1<span 
+class="cmsy-10">∈ {</span>1<span 
 class="cmmi-10">,</span>2<span 
 class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">…</span><span 
 class="cmmi-10">,</span><span 
-class="cmsy-10">|<img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">|𝒞</span><sub><span 
 class="cmmi-7">q</span></sub><span 
 class="cmsy-10">|} </span>corresponds to the <span 
 class="cmti-10">rank  </span>of <span 
 class="cmmi-10">c</span>
      after sorting <span 
-class="cmsy-10"><img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">𝒞</span><sub><span 
 class="cmmi-7">q</span></sub> in <span 
 class="cmti-10">descending order </span>of <span 
 class="cmmi-10">f</span>.
@@ -431,8 +425,7 @@ class="small-caps">a</span><span
 class="small-caps">n</span><span 
 class="small-caps">k</span></span> <sub><span 
 class="cmmi-7">f</span></sub>, but <span 
-class="cmsy-10"><img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">𝒞</span><sub><span 
 class="cmmi-7">q</span></sub> is ordered in <span 
 class="cmti-10">ascending order</span>
      of <span 
@@ -453,14 +446,13 @@ class="small-caps">t</span>-M<span
 class="small-caps">i</span><span 
 class="small-caps">n</span></span> <sub><span 
 class="cmmi-7">f</span></sub> <span 
-class="cmsy-10">&#x2208; </span><span 
-class="msbm-10">&#x211D; </span>is given by the absolute value of
-     the difference between the value of <span 
+class="cmsy-10">∈ </span><span 
+class="msbm-10">ℝ </span>is given by the absolute value of
+     the diﬀerence between the value of <span 
 class="cmmi-10">f </span>and the <span 
 class="cmti-10">smallest value </span>of <span 
 class="cmmi-10">f </span>in <span 
-class="cmsy-10"><img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">𝒞</span><sub><span 
 class="cmmi-7">q</span></sub>.
      </li>
      <li class="itemize"><span 
@@ -477,12 +469,11 @@ class="small-caps">s</span><span
 class="small-caps">t</span>-M<span 
 class="small-caps">i</span><span 
 class="small-caps">n</span></span> <sub><span 
-class="cmmi-7">f</span></sub>, but we consider the difference
+class="cmmi-7">f</span></sub>, but we consider the diﬀerence
      with the <span 
 class="cmti-10">largest value </span>of <span 
 class="cmmi-10">f </span>in <span 
-class="cmsy-10"><img 
-src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmsy-10">𝒞</span><sub><span 
 class="cmmi-7">q</span></sub>.</li></ul>
 <!--l. 86--><p class="indent" >   We expect that these new features can improve the scoring ability of the learned
 models since they contribute to give information about the whole set of candidates
@@ -514,26 +505,23 @@ class="cmmi-7">f</span></sub> are not mutually exclusive. If higher values of
 class="cmmi-10">f </span>are better, the former could promote good documents, while the latter should
 demote bad documents.
    <h3 class="likesectionHead"><a 
- id="x1-2000"></a>Efficiency of learned models</h3>
-<!--l. 99--><p class="noindent" >Figure&#x00A0;<a 
+ id="x1-2000"></a>Eﬃciency of learned models</h3>
+<!--l. 99--><p class="noindent" >Figure <a 
 href="#x1-20011">1<!--tex4ht:ref: fig:rbeff --></a> illustrates the quality in terms of <span 
 class="cmss-10">NDCG </span>of the <span 
-class="cmmi-10">&#x03BB;</span>-MART models trained on
-MSN/Fold&#x00A0;1 by using <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span>, <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmmi-10">λ</span>-MART models trained on
+MSN/Fold 1 by using <span 
+class="cmsy-10">ℱ</span>, <span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+40</span></sup>, and <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+10</span></sup> (respectively the original feature
 set, and extended feature sets adding 40 or 10 rank-based features). We
 report the values of <span 
-class="cmss-10">NDCG</span>@50 obtained on the test set of MSN/Fold&#x00A0;1 as
+class="cmss-10">NDCG</span>@50 obtained on the test set of MSN/Fold 1 as
 a function of the number of trees of the generated model. Note that the
-three curves stops in correspondence of a different number of trees: this is
-because the validation set is used to choose the number of trees in the final
+three curves stops in correspondence of a diﬀerent number of trees: this is
+because the validation set is used to choose the number of trees in the ﬁnal
 model.
 <!--l. 108--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
@@ -550,45 +538,36 @@ model.
 src="../../archives/20150416b/effectivenessMSN1.png" alt="PIC"  
 >
 <br /> <div class="caption" 
-><span class="id">Figure&#x00A0;1: </span><span  
-class="content">Effectiveness with features sets <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+><span class="id">Figure 1: </span><span  
+class="content">Eﬀectiveness with features sets <span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+40</span></sup>, <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+10</span></sup>, and <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>on MSN/Fold 1.</span></div><!--tex4ht:label?: x1-20011 -->
+class="cmsy-10">ℱ </span>on MSN/Fold 1.</span></div><!--tex4ht:label?: x1-20011 -->
                                                                   
 
                                                                   
 <!--l. 112--><p class="indent" >   </div><hr class="endfigure">
-<!--l. 114--><p class="indent" >   The benefit of our rank-based features shows up very early in the learning
+<!--l. 114--><p class="indent" >   The beneﬁt of our rank-based features shows up very early in the learning
 process. First, we note that the new feature sets <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+40</span></sup> and <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+10</span></sup> always produce
-models that are more effective than the one obtained by using the original feature set
+models that are more eﬀective than the one obtained by using the original feature set
 <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>at smaller ensemble sizes. More importantly, the maximum quality of the model
+class="cmsy-10">ℱ </span>at smaller ensemble sizes. More importantly, the maximum quality of the model
 trained on <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>requires a number of trees that is about three times larger than the
+class="cmsy-10">ℱ </span>requires a number of trees that is about three times larger than the
 number of trees of the models trained on either <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+40</span></sup> or <span 
-class="cmsy-10"><img 
-src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmsy-10">ℱ</span><sup><span 
 class="cmr-7">+10</span></sup> to obtain the same
 <span 
-class="cmss-10">NDCG</span>@50. This behaviour is very significant, since the number of trees directly
-impacts ranking efficiency. Document scoring requires in fact the traversal of all
+class="cmss-10">NDCG</span>@50. This behaviour is very signiﬁcant, since the number of trees directly
+impacts ranking eﬃciency. Document scoring requires in fact the traversal of all
 the trees of the model, and its cost is thus linearly proportional to their
 number.
    <div class="btSect">
@@ -598,11 +577,11 @@ number.
  id="x1-3000doc"></a>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
- id="Xsigir15short"></a>Claudio Lucchese, Franco&#x00A0;Maria Nardini, Salvatore Orlando, Raffaele Perego,
+ [1]<span class="bibsp">   </span></span><a 
+ id="Xsigir15short"></a>Claudio Lucchese, Franco Maria Nardini, Salvatore Orlando, Raﬀaele Perego,
    and Nicola Tonellotto. Speeding up document ranking with rank-based features.
    In <span 
-class="cmti-10">SIGIR &#8217;15: Proceedings of the 38th International ACM SIGIR Conference on</span>
+class="cmti-10">SIGIR &#x2019;15: Proceedings of the 38th International ACM SIGIR Conference on</span>
    <span 
 class="cmti-10">Research and Development in Information Retrieval</span>, 2015.
 </p>

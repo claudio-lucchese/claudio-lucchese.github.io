@@ -3,10 +3,10 @@
 <html > 
 <head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Cracker algorithm for mining connected components in large graphs accepted at
 ISCC 2015!</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -109,13 +109,13 @@ class="cmr-12">Apr. 16 2015</span></div>
 <!--l. 8--><p class="indent" >   Accepted at the <span 
 class="cmbx-10">20th IEEE Symposium on Computers and</span>
 <span 
-class="cmbx-10">Communications, Larnaca, Cyprus, 6&#8211;9 July 2015 </span><span class="cite">[<a 
+class="cmbx-10">Communications, Larnaca, Cyprus, 6–9 July 2015 </span><span class="cite">[<a 
 href="#Xiscc15">1</a>]</span>.
 <!--l. 11--><p class="indent" >   <span 
-class="cmbx-10">Abstract. </span>The problem of finding connected components in a graph is common
+class="cmbx-10">Abstract. </span>The problem of ﬁnding connected components in a graph is common
 to several applications dealing with graph analytics, such as social network analysis,
 web graph mining and image processing. The exponentially growing size of graphs
-requires the definition of appropriated computational models and algorithms for their
+requires the deﬁnition of appropriated computational models and algorithms for their
 processing on high throughput distributed architectures. In this paper we present
 <span 
 class="cmcsc-10"><span 
@@ -126,7 +126,7 @@ class="small-caps">c</span><span
 class="small-caps">k</span><span 
 class="small-caps">e</span><span 
 class="small-caps">r</span></span>, an <span 
-class="cmti-10">efficient </span>iterative algorithm to detect connected components in large
+class="cmti-10">eﬃcient </span>iterative algorithm to detect connected components in large
 graphs. The strategy of <span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
@@ -183,7 +183,7 @@ class="small-caps">c</span><span
 class="small-caps">c</span></span>s. Similarly, as soon as a <span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
-class="small-caps">c</span> </span>is identified, it can be excluded from
+class="small-caps">c</span> </span>is identiﬁed, it can be excluded from
 computation since it does not impact on the other <span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
@@ -205,7 +205,7 @@ component.
 src="../../archives/20150416/cracker.png" alt="PIC"  
 >
 <br /> <div class="caption" 
-><span class="id">Figure&#x00A0;1: </span><span  
+><span class="id">Figure 1: </span><span  
 class="content"><span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
@@ -214,13 +214,13 @@ class="small-caps">a</span><span
 class="small-caps">c</span><span 
 class="small-caps">k</span><span 
 class="small-caps">e</span><span 
-class="small-caps">r</span></span>: example of seed identification. Gray nodes are excluded
+class="small-caps">r</span></span>: example of seed identiﬁcation. Gray nodes are excluded
 from the computation</span></div><!--tex4ht:label?: x1-10011 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 42--><p class="indent" >   The seed identification is an iterative algorithm made of two steps. The first step,
+<!--l. 42--><p class="indent" >   The seed identiﬁcation is an iterative algorithm made of two steps. The ﬁrst step,
 named <span 
 class="cmti-10">Min Selection Step</span>, aims at understanding, for each node, if it is a potential
 seed by at least one of its neighbours. This decision is taken locally at each node,
@@ -254,7 +254,7 @@ class="cmmi-7">t</span><span
 class="cmr-7">+1</span></sup>, smaller that <span 
 class="cmmi-10">G</span><sup><span 
 class="cmmi-7">t</span></sup>, is generated and
-used to feed the next iteration (see Figure&#x00A0;<a 
+used to feed the next iteration (see Figure <a 
 href="#x1-10011">1<!--tex4ht:ref: fig:example --></a>). The nodes that are moved during
 the <span 
 class="cmti-10">Pruning Step </span>grow a forest of covering trees <span 
@@ -264,7 +264,7 @@ class="small-caps">c</span><span
 class="small-caps">c</span> </span>in the graph.
 Eventually, the seeds remain the only active nodes in the computation. Upon their
 deactivation, the <span 
-class="cmti-10">Seed Identification </span>terminates and the <span 
+class="cmti-10">Seed Identiﬁcation </span>terminates and the <span 
 class="cmti-10">Seed Propagation </span>is
 triggered.
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
@@ -279,7 +279,7 @@ triggered.
 
                                                                   
  <div class="caption" 
-><span class="id">Table&#x00A0;1: </span><span  
+><span class="id">Table 1: </span><span  
 class="content"><span 
 class="cmr-9">Results on real-world datasets. The results marked with star are relative to</span>
 <span 
@@ -454,15 +454,15 @@ class="small-caps">r</span>         </span></td><td  style="white-space:nowrap; 
 class="td11"><span 
 class="cmmi-9">&#x003E;</span><span 
 class="cmr-9">3957</span><sup><span 
-class="cmsy-6">*</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-3"  
+class="cmsy-6">∗</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-3"  
 class="td11"><span 
 class="cmmi-9">&#x003E;</span><span 
 class="cmr-9">15</span><sup><span 
-class="cmsy-6">*</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-4"  
+class="cmsy-6">∗</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-4"  
 class="td11">    <span 
-class="cmr-9">&#8211;</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-5"  
+class="cmr-9">–</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-5"  
 class="td11">   <span 
-class="cmr-9">&#8211;</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-6"  
+class="cmr-9">–</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-6"  
 class="td11">   <span 
 class="cmr-9">88</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-7"  
 class="td11">   <span 
@@ -704,7 +704,7 @@ class="td11">           </td></tr></table></div>
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 144--><p class="noindent" >Experimental results on real-word data are shown in Table&#x00A0;<a 
+<!--l. 144--><p class="noindent" >Experimental results on real-word data are shown in Table <a 
 href="#x1-20011">1<!--tex4ht:ref: table:result_roadNetwork --></a>. <span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
@@ -714,8 +714,8 @@ class="small-caps">c</span><span
 class="small-caps">k</span><span 
 class="small-caps">e</span><span 
 class="small-caps">r</span> </span>resulted to
-be the most efficient algorithm. The wide spectrum of datasets analysed reveals that
-the pruning mechanism is effective and lets <span 
+be the most eﬃcient algorithm. The wide spectrum of datasets analysed reveals that
+the pruning mechanism is eﬀective and lets <span 
 class="cmcsc-10"><span 
 class="small-caps">c</span><span 
 class="small-caps">r</span><span 
@@ -732,8 +732,8 @@ class="small-caps">a</span><span
 class="small-caps">c</span><span 
 class="small-caps">k</span><span 
 class="small-caps">e</span><span 
-class="small-caps">r</span> </span>revealed to be a very flexible solution, resulting
-the most efficient solution both when the largest <span 
+class="small-caps">r</span> </span>revealed to be a very ﬂexible solution, resulting
+the most eﬃcient solution both when the largest <span 
 class="cmss-10">cc </span>is near the dimension of the
 entire graph and when it is of smaller size. In terms of time, <span 
 class="cmcsc-10"><span 
@@ -760,11 +760,11 @@ competitors.
  id="x1-30002"></a>References</h3>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ [1]<span class="bibsp">   </span></span><a 
  id="Xiscc15"></a>Emanuele Carlini, Patrizio Dazzi, Alessandro Lulli, Claudio Lucchese, and
    Laura Ricci. Cracker: Crumbling large graphs into connected components. In
    <span 
-class="cmti-10">ISCC &#8217;15: Proceedings of the 20th IEEE Symposium on Computers and</span>
+class="cmti-10">ISCC &#x2019;15: Proceedings of the 20th IEEE Symposium on Computers and</span>
    <span 
 class="cmti-10">Communications</span>, 2015.
 </p>

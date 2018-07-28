@@ -2,10 +2,10 @@
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
 <head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Electoral Predictions with Twitter: a Machine-Learning approach</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
-<!-- html --> 
+<!-- charset=utf-8,html --> 
 <meta name="src" content="index.tex"> 
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
@@ -97,16 +97,16 @@ class="cmr-12">Mauro Coletto, HPC Lab., ISTI-CNR, Pisa, and IMT, Lucca, Italy</s
 class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
 <br />  <span 
 class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
-class="cmr-12">� Ca&#8217; Foscari Venezia, Italy</span>
+class="cmr-12">à Ca&#x2019; Foscari Venezia, Italy</span>
 <br />         <span 
-class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+class="cmr-12">Raﬀaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
 <div class="date" ><span 
 class="cmr-12">Apr. 23 2015</span></div>
    </div>
 <!--l. 9--><p class="indent" >   Accepted at the <span 
 class="cmbx-10">6th Italian Information Retrieval Workshop, Cagliary,</span>
 <span 
-class="cmbx-10">Italy, 25&#8211;26 May 2015 </span><span class="cite">[<a 
+class="cmbx-10">Italy, 25–26 May 2015 </span><span class="cite">[<a 
 href="#Xiir15twitter">1</a>]</span>.
 <!--l. 12--><p class="indent" >   <span 
 class="cmbx-10">Abstract. </span>In this work we study how Twitter can provide some interesting
@@ -126,33 +126,33 @@ class="cmbx-10">Twitter users are not a representative</span>
 class="cmbx-10">sample of the voters populatio</span>n. Even if we were able to correctly classify each
 Twitter user, we would not be able to make a reliable estimate of the voting results
 as (i) several Twitter users may not vote, (ii) several voters are not present on
-Twitter, and (iii) the voters of each candidate have a different degree of
+Twitter, and (iii) the voters of each candidate have a diﬀerent degree of
 representativeness in Twitter.
 <!--l. 46--><p class="indent" >   Given a predictor <span 
-class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">ϕ</span>(<span 
 class="cmmi-10">c</span>), we aim at learning a set of weights <span 
 class="cmmi-10">w</span><sub><span 
 class="cmmi-7">c</span></sub>, one for each
 candidate, such that <span 
 class="cmmi-10">w</span><sub><span 
 class="cmmi-7">c</span></sub><span 
-class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">ϕ</span>(<span 
 class="cmmi-10">c</span>) improves the estimate of actual votes received. The
 weights <span 
 class="cmmi-10">w</span><sub><span 
-class="cmmi-7">c</span></sub> should act as a bridge correcting an estimate based on Twitter users to fit
+class="cmmi-7">c</span></sub> should act as a bridge correcting an estimate based on Twitter users to ﬁt
 real world users behavior. We aim at <span 
 class="cmti-10">learning </span>the weights <span 
 class="cmmi-10">w</span><sub><span 
 class="cmmi-7">c</span></sub>. For each region of Italy
 and for each candidate <span 
 class="cmmi-10">c</span>, we create a training instance <span 
-class="cmsy-10">&#x27E8;</span><span 
+class="cmsy-10">⟨</span><span 
 class="cmmi-10">y</span><sub><span 
 class="cmmi-7">c</span></sub><span 
 class="cmmi-10">,x</span><sub><span 
 class="cmmi-7">c</span></sub><span 
-class="cmsy-10">&#x27E9;</span>, where <span 
+class="cmsy-10">⟩</span>, where <span 
 class="cmmi-10">y</span><sub><span 
 class="cmmi-7">c</span></sub> is the <span 
 class="cmti-10">target</span>
@@ -166,7 +166,7 @@ region, and <span
 class="cmmi-10">x</span><sub><span 
 class="cmmi-7">c</span></sub> is the <span 
 class="cmti-10">input variable </span>equal to a given estimator <span 
-class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">ϕ</span>(<span 
 class="cmmi-10">c</span>). In general, a
 vector of <span 
 class="cmti-10">input variables </span>can be used. We thus have a <span 
@@ -179,11 +179,11 @@ class="cmmi-7">c</span></sub> via linear regression that minimizes
 (<span 
 class="cmmi-10">y</span><sub><span 
 class="cmmi-7">c</span></sub> <span 
-class="cmsy-10">- </span><span 
+class="cmsy-10">− </span><span 
 class="cmmi-10">w</span><sub><span 
 class="cmmi-7">c</span></sub> <span 
-class="cmsy-10">&#x22C5; </span><span 
-class="cmmi-10">&#x03D5;</span>(<span 
+class="cmsy-10">⋅ </span><span 
+class="cmmi-10">ϕ</span>(<span 
 class="cmmi-10">c</span>))<sup><span 
 class="cmr-7">2</span></sup>.
    <div class="table">
@@ -197,7 +197,7 @@ class="cmr-7">2</span></sup>.
 
                                                                   
 <br /> <div class="caption" 
-><span class="id">Table&#x00A0;1: </span><span  
+><span class="id">Table 1: </span><span  
 class="content"> Baseline and Machine-learned performance.</span></div><!--tex4ht:label?: x1-10011 -->
 <div class="tabular"> <table id="TBL-2" class="tabular" 
 cellspacing="0" cellpadding="0"  
@@ -265,7 +265,7 @@ class="td11">                 </td></tr></table></div>
                                                                   
    </div><hr class="endfloat" />
    </div>
-<!--l. 78--><p class="indent" >   We used three different evaluation measures to assess the approaches discussed in
+<!--l. 78--><p class="indent" >   We used three diﬀerent evaluation measures to assess the approaches discussed in
 this work. The most commonly used evaluation measure is the Mean Absolute Error
 (<span 
 class="cmcsc-10">MAE</span>). We also report the Root Mean Squared Error (<span 
@@ -278,12 +278,12 @@ that the correct ranking of all the candidates was produced. Note that we
 conducted a per-region analysis, meaning that a prediction is produced for
 every region by exploiting the regional data only. The presented results are
 averaged across the 20 Italian regions. We applied this approach to three basic
-predictors. As reported in Table&#x00A0;<a 
-href="#x1-10011">1<!--tex4ht:ref: tab:twitter-prediction --></a> these new approaches provide a significant
+predictors. As reported in Table <a 
+href="#x1-10011">1<!--tex4ht:ref: tab:twitter-prediction --></a> these new approaches provide a signiﬁcant
 improvement according to all metrics. A huge improvement is observed according to
 the <span 
 class="cmss-10">MRM </span>metric: we were able to reduce the prediction error on the votes
-shares up to the point of being able to correctly predict the final ranking of
+shares up to the point of being able to correctly predict the ﬁnal ranking of
 the candidates. By inspecting the weights learned by the best performing
 strategy, we see that the three candidates Renzi, Cuperlo and Civati have
 weights 1<span 
@@ -298,13 +298,13 @@ the correction weights <span
 class="cmmi-10">w</span><sub><span 
 class="cmmi-7">c</span></sub>. This makes it not possible to directly apply the
 method before the election takes place. On the other hand, we can assume that
-weights are sufficiently stable, i.e., that the degree of representativeness of the
-Twitter sample for a specific sample does not change abruptly. If this is
+weights are suﬃciently stable, i.e., that the degree of representativeness of the
+Twitter sample for a speciﬁc sample does not change abruptly. If this is
 the case, then we can learn those weights by exploiting data from previous
 events. Indeed, it would be possible exploit elections at municipality, regional
 and European level to learn a proper set of weights for national elections.
 Another interesting case is that of a two-round voting system, where the model
-could be trained after the first round and used to predict the outcome of the
+could be trained after the ﬁrst round and used to predict the outcome of the
 second. Yet another option is to complement prediction with traditional polls
 data.
    <div class="btSect">
@@ -314,10 +314,10 @@ data.
  id="x1-2000doc"></a>
    <div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
- id="Xiir15twitter"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raffaele Perego.
+ [1]<span class="bibsp">   </span></span><a 
+ id="Xiir15twitter"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raﬀaele Perego.
    Electoral predictions with twitter: a machine-learning approach. <span 
-class="cmti-10">IIR &#8217;15: 6th</span>
+class="cmti-10">IIR &#x2019;15: 6th</span>
    <span 
 class="cmti-10">Italian Information Retrieval Workshop</span>, 2015.
                                                                   
