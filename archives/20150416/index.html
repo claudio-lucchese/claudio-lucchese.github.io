@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Cracker algorithm for mining connected components in large graphs accepted at
+ISCC 2015!</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Cracker algorithm for mining connected
+components in large graphs accepted at ISCC
+2015!</h2>
+          <div class="author" > <span 
+class="cmr-12">Emanuele Carlini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />            <span 
+class="cmr-12">Patrizio Dazzi, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br /><span 
+class="cmr-12">Alessandro Lulli, University of Pisa and HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />           <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                     <span 
+class="cmr-12">Laura Ricci, University of Pisa </span></div><br />
+<div class="date" ><span 
+class="cmr-12">Apr. 16 2015</span></div>
+   </div>
+<!--l. 8--><p class="indent" >   Accepted at the <span 
+class="cmbx-10">20th IEEE Symposium on Computers and</span>
+<span 
+class="cmbx-10">Communications, Larnaca, Cyprus, 6&#8211;9 July 2015 </span><span class="cite">[<a 
+href="#Xiscc15">1</a>]</span>.
+<!--l. 11--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>The problem of finding connected components in a graph is common
+to several applications dealing with graph analytics, such as social network analysis,
+web graph mining and image processing. The exponentially growing size of graphs
+requires the definition of appropriated computational models and algorithms for their
+processing on high throughput distributed architectures. In this paper we present
+<span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span></span>, an <span 
+class="cmti-10">efficient </span>iterative algorithm to detect connected components in large
+graphs. The strategy of <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>is to iteratively grow a spanning tree for each
+connected component of the graph. Nodes added to such trees are discarded from the
+computation in the subsequent iterations. We provide an extensive experimental
+evaluation considering a wide variety of synthetic and real-world graphs. The
+experimental results show that <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>consistently outperforms state-of-the-art
+approaches both in terms of total computation time and volume of messages
+exchanged.
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>The <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>Algorithm</h3>
+<!--l. 30--><p class="noindent" >The basic idea of <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>is to iteratively reduce the graph size by progressively
+pruning vertices until only one vertex for each connected components (<span 
+class="cmss-10">CC</span>) is left, i.e.,
+its <span 
+class="cmti-10">seed</span>. For instance, an isolated vertex can be immediately excluded from further
+processing, since it does not provide useful information for the discovery of the
+                                                                  
+
+                                                                  
+other <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span></span>s. Similarly, as soon as a <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span> </span>is identified, it can be excluded from
+computation since it does not impact on the other <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span></span>s in the graph. When a
+vertex is removed, it contributes to iteratively build a spanning tree that,
+at the end of the algorithm, will exist a spanning tree for each connected
+component.
+                                                                  
+
+                                                                  
+<!--l. 36--><p class="indent" >   <a 
+ id="x1-10011"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+
+<img 
+src="../../archives/20150416/cracker.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content"><span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span></span>: example of seed identification. Gray nodes are excluded
+from the computation</span></div><!--tex4ht:label?: x1-10011 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 42--><p class="indent" >   The seed identification is an iterative algorithm made of two steps. The first step,
+named <span 
+class="cmti-10">Min Selection Step</span>, aims at understanding, for each node, if it is a potential
+seed by at least one of its neighbours. This decision is taken locally at each node,
+given that the only knowledge available locally to each node is its neighbourhood.
+A node can be considered as a <span 
+class="cmti-10">potential seed </span>if it is a local minimum in
+the neighbourhood of some node. If a node is not a local minimum in any
+neighbourhood then it cannot be a <span 
+class="cmti-10">seed</span>. To identify such nodes, the information
+about the local minimum in its neighbourhood is spread by each node to its
+neighbourhood.
+<!--l. 44--><p class="indent" >   Given the <span 
+class="cmti-10">undirected </span>input graph <span 
+class="cmmi-10">G</span><sup><span 
+class="cmmi-7">t</span></sup>, an intermediate <span 
+class="cmti-10">directed </span>graph <span 
+class="cmmi-10">H</span><sup><span 
+class="cmmi-7">t</span></sup> is
+generated linking nodes to potential seeds. Subsequently, the goal of the <span 
+class="cmti-10">Pruning</span>
+<span 
+class="cmti-10">Step </span>is to remove from <span 
+class="cmmi-10">H</span><sup><span 
+class="cmmi-7">t</span></sup>, and thereby <span 
+class="cmti-10">deactivate</span>, all the nodes that cannot be
+considered as <span 
+class="cmti-10">seeds</span>. A new <span 
+class="cmti-10">undirected </span>graph <span 
+class="cmmi-10">G</span><sup><span 
+class="cmmi-7">t</span><span 
+class="cmr-7">+1</span></sup>, smaller that <span 
+class="cmmi-10">G</span><sup><span 
+class="cmmi-7">t</span></sup>, is generated and
+used to feed the next iteration (see Figure&#x00A0;<a 
+href="#x1-10011">1<!--tex4ht:ref: fig:example --></a>). The nodes that are moved during
+the <span 
+class="cmti-10">Pruning Step </span>grow a forest of covering trees <span 
+class="cmmi-10">T </span>of the <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span> </span>in the graph.
+Eventually, the seeds remain the only active nodes in the computation. Upon their
+deactivation, the <span 
+class="cmti-10">Seed Identification </span>terminates and the <span 
+class="cmti-10">Seed Propagation </span>is
+triggered.
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-20002"></a>Experiments</h3>
+                                                                  
+
+                                                                  
+<!--l. 53--><p class="indent" >   <a 
+ id="x1-20011"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content"><span 
+class="cmr-9">Results on real-world datasets. The results marked with star are relative to</span>
+<span 
+class="cmr-9">not terminated executions due to errors.</span></span></div><!--tex4ht:label?: x1-20011 -->
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2"></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3"></colgroup><colgroup id="TBL-2-4g"><col 
+id="TBL-2-4"></colgroup><colgroup id="TBL-2-5g"><col 
+id="TBL-2-5"></colgroup><colgroup id="TBL-2-6g"><col 
+id="TBL-2-6"></colgroup><colgroup id="TBL-2-7g"><col 
+id="TBL-2-7"></colgroup><colgroup id="TBL-2-8g"><col 
+id="TBL-2-8"></colgroup><colgroup id="TBL-2-9g"><col 
+id="TBL-2-9"></colgroup><colgroup id="TBL-2-10g"><col 
+id="TBL-2-10"></colgroup><colgroup id="TBL-2-11g"><col 
+id="TBL-2-11"></colgroup><colgroup id="TBL-2-12g"><col 
+id="TBL-2-12"></colgroup><colgroup id="TBL-2-13g"><col 
+id="TBL-2-13"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
+class="td11">           </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11">           <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">Italy</span></div>          </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-1-6"  
+class="td11">        <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">California</span></div>       </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-1-10"  
+class="td11">         <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">PPI-All</span></div>
+</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-1"  
+class="td11"><span 
+class="cmr-9">Algorithm    </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-2"  
+class="td11">  <span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-3"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-4"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-5"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-6"  
+class="td11"><span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-7"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-8"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-9"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-10"  
+class="td11"><span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-11"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-12"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-2-13"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span>     </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-2"  
+class="td11">   <span 
+class="cmr-9">461</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-3"  
+class="td11">   <span 
+class="cmr-9">33</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-4"  
+class="td11">  <span 
+class="cmr-9">726</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-5"  
+class="td11"><span 
+class="cmr-9">1724</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-6"  
+class="td11">   <span 
+class="cmr-9">37</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-7"  
+class="td11">   <span 
+class="cmr-9">24</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-8"  
+class="td11">   <span 
+class="cmr-9">54</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-9"  
+class="td11"> <span 
+class="cmr-9">132</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-10"  
+class="td11"> <span 
+class="cmr-9">1389</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-11"  
+class="td11">   <span 
+class="cmr-9">12</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-12"  
+class="td11">  <span 
+class="cmr-9">885</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-3-13"  
+class="td11"><span 
+class="cmr-9">2134</span></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">f</span> </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-2"  
+class="td11"> <span 
+class="cmr-9">807</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-3"  
+class="td11"> <span 
+class="cmr-9">18</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-4"  
+class="td11"> <span 
+class="cmr-9">1214</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-5"  
+class="td11"><span 
+class="cmr-9">4744</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-6"  
+class="td11"> <span 
+class="cmr-9">60</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-7"  
+class="td11"> <span 
+class="cmr-9">14</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-8"  
+class="td11"> <span 
+class="cmr-9">100</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-9"  
+class="td11"> <span 
+class="cmr-9">408</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-10"  
+class="td11"> <span 
+class="cmr-9">2182</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-11"  
+class="td11"> <span 
+class="cmr-9">6</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-12"  
+class="td11"> <span 
+class="cmr-9">239</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-4-13"  
+class="td11"><span 
+class="cmr-9">3733</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">h</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">h</span>-<span 
+class="small-caps">t</span><span 
+class="small-caps">o</span>-<span 
+class="small-caps">m</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span></span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-2"  
+class="td11">  <span 
+class="cmr-9">1681</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-3"  
+class="td11">   <span 
+class="cmr-9">18</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-4"  
+class="td11"> <span 
+class="cmr-9">1774</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-5"  
+class="td11"><span 
+class="cmr-9">6456</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-6"  
+class="td11">   <span 
+class="cmr-9">87</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-7"  
+class="td11">   <span 
+class="cmr-9">14</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-8"  
+class="td11">  <span 
+class="cmr-9">147</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-9"  
+class="td11"> <span 
+class="cmr-9">539</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-10"  
+class="td11"> <span 
+class="cmr-9">1777</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-11"  
+class="td11">    <span 
+class="cmr-9">6</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-12"  
+class="td11"> <span 
+class="cmr-9">1103</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-5-13"  
+class="td11"><span 
+class="cmr-9">4360</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">m</span><span 
+class="small-caps">r</span>         </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-2"  
+class="td11"><span 
+class="cmmi-9">&#x003E;</span><span 
+class="cmr-9">3957</span><sup><span 
+class="cmsy-6">*</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-3"  
+class="td11"><span 
+class="cmmi-9">&#x003E;</span><span 
+class="cmr-9">15</span><sup><span 
+class="cmsy-6">*</span></sup></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-4"  
+class="td11">    <span 
+class="cmr-9">&#8211;</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-5"  
+class="td11">   <span 
+class="cmr-9">&#8211;</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-6"  
+class="td11">   <span 
+class="cmr-9">88</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-7"  
+class="td11">   <span 
+class="cmr-9">14</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-8"  
+class="td11">  <span 
+class="cmr-9">197</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-9"  
+class="td11"> <span 
+class="cmr-9">333</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-10"  
+class="td11"> <span 
+class="cmr-9">2235</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-11"  
+class="td11">    <span 
+class="cmr-9">6</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-12"  
+class="td11"> <span 
+class="cmr-9">3099</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-6-13"  
+class="td11"><span 
+class="cmr-9">5174</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td colspan="13" style="white-space:nowrap; text-align:center;" id="TBL-2-7-1"  
+class="td11">                                             <div class="multicolumn"  style="white-space:nowrap; text-align:center;"> </div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-8-1"  
+class="td11">           </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-8-2"  
+class="td11">          <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">Flickr</span></div>         </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-8-6"  
+class="td11">        <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">YouTube</span></div>       </td><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-2-8-10"  
+class="td11">         <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmr-9">Skitter</span></div>
+</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-9-1"  
+class="td11"><span 
+class="cmr-9">Algorithm    </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-2"  
+class="td11">  <span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-3"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-4"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-5"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-6"  
+class="td11"><span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-7"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-8"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-9"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-10"  
+class="td11"><span 
+class="cmr-9">Time</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-11"  
+class="td11"><span 
+class="cmr-9">Steps</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-12"  
+class="td11"><span 
+class="cmr-9">Msg.s</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-9-13"  
+class="td11"> <span 
+class="cmr-9">Vol.</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-10-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-10-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span>     </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-2"  
+class="td11">    <span 
+class="cmr-9">45</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-3"  
+class="td11">   <span 
+class="cmr-9">12</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-4"  
+class="td11">   <span 
+class="cmr-9">60</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-5"  
+class="td11"> <span 
+class="cmr-9">147</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-6"  
+class="td11">   <span 
+class="cmr-9">43</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-7"  
+class="td11">   <span 
+class="cmr-9">15</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-8"  
+class="td11">   <span 
+class="cmr-9">68</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-9"  
+class="td11"> <span 
+class="cmr-9">164</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-10"  
+class="td11">   <span 
+class="cmr-9">35</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-11"  
+class="td11">   <span 
+class="cmr-9">14</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-12"  
+class="td11">   <span 
+class="cmr-9">50</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-10-13"  
+class="td11"> <span 
+class="cmr-9">126</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-11-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-11-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">f</span>           </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-2"  
+class="td11">    <span 
+class="cmr-9">54</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-3"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-4"  
+class="td11">   <span 
+class="cmr-9">40</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-5"  
+class="td11"> <span 
+class="cmr-9">239</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-6"  
+class="td11">   <span 
+class="cmr-9">49</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-7"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-8"  
+class="td11">   <span 
+class="cmr-9">65</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-9"  
+class="td11"> <span 
+class="cmr-9">267</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-10"  
+class="td11">   <span 
+class="cmr-9">38</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-11"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-12"  
+class="td11">   <span 
+class="cmr-9">39</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-11-13"  
+class="td11"> <span 
+class="cmr-9">193</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-12-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-12-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">h</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">h</span>-<span 
+class="small-caps">t</span><span 
+class="small-caps">o</span>-<span 
+class="small-caps">m</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span></span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-2"  
+class="td11">    <span 
+class="cmr-9">82</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-3"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-4"  
+class="td11">   <span 
+class="cmr-9">90</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-5"  
+class="td11"> <span 
+class="cmr-9">338</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-6"  
+class="td11">  <span 
+class="cmr-9">113</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-7"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-8"  
+class="td11">  <span 
+class="cmr-9">109</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-9"  
+class="td11"> <span 
+class="cmr-9">394</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-10"  
+class="td11">   <span 
+class="cmr-9">77</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-11"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-12"  
+class="td11">   <span 
+class="cmr-9">82</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-12-13"  
+class="td11"> <span 
+class="cmr-9">305</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-13-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-13-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">m</span><span 
+class="small-caps">r</span>         </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-2"  
+class="td11">   <span 
+class="cmr-9">107</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-3"  
+class="td11">    <span 
+class="cmr-9">6</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-4"  
+class="td11">  <span 
+class="cmr-9">170</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-5"  
+class="td11"> <span 
+class="cmr-9">287</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-6"  
+class="td11">  <span 
+class="cmr-9">211</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-7"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-8"  
+class="td11">  <span 
+class="cmr-9">140</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-9"  
+class="td11"> <span 
+class="cmr-9">239</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-10"  
+class="td11">  <span 
+class="cmr-9">127</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-11"  
+class="td11">    <span 
+class="cmr-9">7</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-12"  
+class="td11">  <span 
+class="cmr-9">151</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-13-13"  
+class="td11"> <span 
+class="cmr-9">255</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-14-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-14-1"  
+class="td11"><span 
+class="cmcsc-10x-x-90"><span 
+class="small-caps">p</span><span 
+class="small-caps">e</span><span 
+class="small-caps">g</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">u</span><span 
+class="small-caps">s</span>     </span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-2"  
+class="td11">   <span 
+class="cmr-9">121</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-3"  
+class="td11">   <span 
+class="cmr-9">14</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-4"  
+class="td11">  <span 
+class="cmr-9">459</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-5"  
+class="td11"><span 
+class="cmr-9">1354</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-6"  
+class="td11">  <span 
+class="cmr-9">140</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-7"  
+class="td11">   <span 
+class="cmr-9">19</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-8"  
+class="td11">  <span 
+class="cmr-9">417</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-9"  
+class="td11"><span 
+class="cmr-9">1191</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-10"  
+class="td11">  <span 
+class="cmr-9">136</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-11"  
+class="td11">   <span 
+class="cmr-9">21</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-12"  
+class="td11">  <span 
+class="cmr-9">501</span></td><td  style="white-space:nowrap; text-align:right;" id="TBL-2-14-13"  
+class="td11"><span 
+class="cmr-9">1469</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-15-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-15-1"  
+class="td11">           </td></tr></table></div>
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 144--><p class="noindent" >Experimental results on real-word data are shown in Table&#x00A0;<a 
+href="#x1-20011">1<!--tex4ht:ref: table:result_roadNetwork --></a>. <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>resulted to
+be the most efficient algorithm. The wide spectrum of datasets analysed reveals that
+the pruning mechanism is effective and lets <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>to outperform the existing
+state-of-the-art solutions. <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>revealed to be a very flexible solution, resulting
+the most efficient solution both when the largest <span 
+class="cmss-10">cc </span>is near the dimension of the
+entire graph and when it is of smaller size. In terms of time, <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>outperforms
+its competitors in every dataset used, with the best competitor being from 9% to
+75% slower. Finally, <span 
+class="cmcsc-10"><span 
+class="small-caps">c</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> </span>obtained the least message volume among all the
+competitors.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-30002"></a>References</h3>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xiscc15"></a>Emanuele Carlini, Patrizio Dazzi, Alessandro Lulli, Claudio Lucchese, and
+   Laura Ricci. Cracker: Crumbling large graphs into connected components. In
+   <span 
+class="cmti-10">ISCC &#8217;15: Proceedings of the 20th IEEE Symposium on Computers and</span>
+   <span 
+class="cmti-10">Communications</span>, 2015.
+</p>
+   </div>
+   </div>
+<!--l. 159--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20150416/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

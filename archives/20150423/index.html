@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Electoral Predictions with Twitter: a Machine-Learning approach</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Electoral Predictions with Twitter: a
+Machine-Learning approach</h2>
+<div class="author" > <span 
+class="cmr-12">Mauro Coletto, HPC Lab., ISTI-CNR, Pisa, and IMT, Lucca, Italy</span>
+<br />        <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />  <span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />         <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">Apr. 23 2015</span></div>
+   </div>
+<!--l. 9--><p class="indent" >   Accepted at the <span 
+class="cmbx-10">6th Italian Information Retrieval Workshop, Cagliary,</span>
+<span 
+class="cmbx-10">Italy, 25&#8211;26 May 2015 </span><span class="cite">[<a 
+href="#Xiir15twitter">1</a>]</span>.
+<!--l. 12--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>In this work we study how Twitter can provide some interesting
+insights concerning the primary elections of an Italian political party. State-of-the-
+art approaches rely on indicators based on tweet and user volumes, often including
+sentiment analysis. We investigate how to exploit and improve those indicators in
+order to reduce the bias of the Twitter users sample. We propose novel indicators and
+a novel content-based method. Furthermore, we study how a machine learning
+approach can learn correction factors for those indicators. Experimental results on
+Twitter data support the validity of the proposed methods and their improvement
+over the state of the art.
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Training correcting factors</h3>
+<!--l. 39--><p class="noindent" >One of the assumptions of this work is that <span 
+class="cmbx-10">Twitter users are not a representative</span>
+<span 
+class="cmbx-10">sample of the voters populatio</span>n. Even if we were able to correctly classify each
+Twitter user, we would not be able to make a reliable estimate of the voting results
+as (i) several Twitter users may not vote, (ii) several voters are not present on
+Twitter, and (iii) the voters of each candidate have a different degree of
+representativeness in Twitter.
+<!--l. 46--><p class="indent" >   Given a predictor <span 
+class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">c</span>), we aim at learning a set of weights <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub>, one for each
+candidate, such that <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub><span 
+class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">c</span>) improves the estimate of actual votes received. The
+weights <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub> should act as a bridge correcting an estimate based on Twitter users to fit
+real world users behavior. We aim at <span 
+class="cmti-10">learning </span>the weights <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub>. For each region of Italy
+and for each candidate <span 
+class="cmmi-10">c</span>, we create a training instance <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmmi-10">y</span><sub><span 
+class="cmmi-7">c</span></sub><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">c</span></sub><span 
+class="cmsy-10">&#x27E9;</span>, where <span 
+class="cmmi-10">y</span><sub><span 
+class="cmmi-7">c</span></sub> is the <span 
+class="cmti-10">target</span>
+                                                                  
+
+                                                                  
+<span 
+class="cmti-10">variable </span>being equal to the percentage of votes actually achieved by <span 
+class="cmmi-10">c </span>in the given
+region, and <span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">c</span></sub> is the <span 
+class="cmti-10">input variable </span>equal to a given estimator <span 
+class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">c</span>). In general, a
+vector of <span 
+class="cmti-10">input variables </span>can be used. We thus have a <span 
+class="cmti-10">training data set </span>with 60
+training instances coming from 20 regions and 3 candidates. To conduct a 5-fold cross
+validation the data set was split region-wise in training and test sets. The
+training set was used to learn a weight <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub> via linear regression that minimizes
+(<span 
+class="cmmi-10">y</span><sub><span 
+class="cmmi-7">c</span></sub> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub> <span 
+class="cmsy-10">&#x22C5; </span><span 
+class="cmmi-10">&#x03D5;</span>(<span 
+class="cmmi-10">c</span>))<sup><span 
+class="cmr-7">2</span></sup>.
+   <div class="table">
+                                                                  
+
+                                                                  
+<!--l. 61--><p class="indent" >   <a 
+ id="x1-10011"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+<br /> <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content"> Baseline and Machine-learned performance.</span></div><!--tex4ht:label?: x1-10011 -->
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"><col 
+id="TBL-2-2"><col 
+id="TBL-2-3"><col 
+id="TBL-2-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11">    Algorithm      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11"> <span 
+class="cmcsc-10">MAE </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
+class="td11"><span 
+class="cmcsc-10">RMSE</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
+class="td11"><span 
+class="cmcsc-10">MRM</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11"><span 
+class="cmti-10">baseline </span><span 
+class="cmss-10">TweetCount</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11"> 0.0818 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
+class="td11"> 0.1024 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
+class="td11"> 0.35 </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
+class="td11"> <span 
+class="cmti-10">baseline </span><span 
+class="cmss-10">UserCount </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11"> 0.0940 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
+class="td11"> 0.1080 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
+class="td11"> 0.45</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-1"  
+class="td11">     <span 
+class="cmss-10">UserShare       </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11"> 0.0536 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
+class="td11"> 0.0705 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
+class="td11"> <span 
+class="cmbx-10">0.75 </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
+class="td11"><span 
+class="cmss-10">ML-ClassTweetCount</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11"> 0.0533 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
+class="td11"> 0.0663 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
+class="td11"> 0.69 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-1"  
+class="td11">  <span 
+class="cmss-10">ContentAnalysis   </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
+class="td11"><span 
+class="cmbx-10">0.0525</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
+class="td11"><span 
+class="cmbx-10">0.0630</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-4"  
+class="td11"> 0.70 </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-1"  
+class="td11">                 </td></tr></table></div>
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 78--><p class="indent" >   We used three different evaluation measures to assess the approaches discussed in
+this work. The most commonly used evaluation measure is the Mean Absolute Error
+(<span 
+class="cmcsc-10">MAE</span>). We also report the Root Mean Squared Error (<span 
+class="cmcsc-10">RMSE</span>), as it is more
+sensitive to large estimation errors. Finally, since we are also interested in the
+capability of predicting the correct ranking of the candidates, we also introduced
+the Mean Rank Match (<span 
+class="cmcsc-10">MRM</span>) measure, i.e., the mean number of times
+that the correct ranking of all the candidates was produced. Note that we
+conducted a per-region analysis, meaning that a prediction is produced for
+every region by exploiting the regional data only. The presented results are
+averaged across the 20 Italian regions. We applied this approach to three basic
+predictors. As reported in Table&#x00A0;<a 
+href="#x1-10011">1<!--tex4ht:ref: tab:twitter-prediction --></a> these new approaches provide a significant
+improvement according to all metrics. A huge improvement is observed according to
+the <span 
+class="cmss-10">MRM </span>metric: we were able to reduce the prediction error on the votes
+shares up to the point of being able to correctly predict the final ranking of
+the candidates. By inspecting the weights learned by the best performing
+strategy, we see that the three candidates Renzi, Cuperlo and Civati have
+weights 1<span 
+class="cmmi-10">.</span>02, 1<span 
+class="cmmi-10">.</span>24 and 0<span 
+class="cmmi-10">.</span>70 respectively. This means that the second candidate
+is <span 
+class="cmti-10">under-represented </span>in the Twitter data, and symmetrically for the third
+candidate.
+<!--l. 99--><p class="indent" >   The drawback of this approach is that it requires a training data where to learn
+the correction weights <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">c</span></sub>. This makes it not possible to directly apply the
+method before the election takes place. On the other hand, we can assume that
+weights are sufficiently stable, i.e., that the degree of representativeness of the
+Twitter sample for a specific sample does not change abruptly. If this is
+the case, then we can learn those weights by exploiting data from previous
+events. Indeed, it would be possible exploit elections at municipality, regional
+and European level to learn a proper set of weights for national elections.
+Another interesting case is that of a two-round voting system, where the model
+could be trained after the first round and used to predict the outcome of the
+second. Yet another option is to complement prediction with traditional polls
+data.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>References</h3>
+<a 
+ id="x1-2000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xiir15twitter"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raffaele Perego.
+   Electoral predictions with twitter: a machine-learning approach. <span 
+class="cmti-10">IIR &#8217;15: 6th</span>
+   <span 
+class="cmti-10">Italian Information Retrieval Workshop</span>, 2015.
+                                                                  
+
+                                                                  
+</p>
+   </div>
+   </div>
+<!--l. 117--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20150423/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Speeding up Document Ranking with Rank-based Features</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Speeding up Document Ranking with
+Rank-based Features</h2>
+     <div class="author" > <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />    <span 
+class="cmr-12">Franco Maria Nardini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br /><span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />       <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />      <span 
+class="cmr-12">Nicola Tonellotto, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">Apr. 16 2015</span></div>
+   </div>
+<!--l. 8--><p class="indent" >   Accepted as short paper at the <span 
+class="cmbx-10">38th International ACM SIGIR Conference</span>
+<span 
+class="cmbx-10">on Research and Development in Information Retrieval, Santiago de</span>
+<span 
+class="cmbx-10">Chile, 9&#8211;13 August 2015 </span><span class="cite">[<a 
+href="#Xsigir15short">1</a>]</span>.
+<!--l. 12--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>Learning to Rank (<span 
+class="cmss-10">LtR</span>) is an effective machine learning methodology
+for inducing high-quality document ranking functions. Given a query and a candidate
+set of documents, where query-document pairs are represented by feature
+vectors, a machine-learned function is used to reorder this set. In this paper
+we propose a new family of <span 
+class="cmti-10">rank-based </span>features, which extend the original
+feature vector associated with each query- document pair. Indeed, since they
+are derived as a function of the query- document pair and the full set of
+candidate documents to score, rank-based features provide additional information
+to better rank documents and return the most relevant ones. We report
+a comprehensive evaluation showing that rank-based features allow us to
+achieve the desired effectiveness with ranking models being up to 3<span 
+class="cmmi-10">.</span>5 times
+smaller than models not using them, with a scoring time reduction up to
+70%.
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Rank-based Features</h3>
+   <div class="table">
+                                                                  
+
+                                                                  
+<!--l. 29--><p class="indent" >   <a 
+ id="x1-10011"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content">A small example of golden set for learning to rank.</span></div><!--tex4ht:label?: x1-10011 -->
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"><col 
+id="TBL-2-2"><col 
+id="TBL-2-3"></colgroup><colgroup id="TBL-2-4g"><col 
+id="TBL-2-4"><col 
+id="TBL-2-5"><col 
+id="TBL-2-6"></colgroup><colgroup id="TBL-2-7g"><col 
+id="TBL-2-7"><col 
+id="TBL-2-8"><col 
+id="TBL-2-9"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td colspan="3" style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11">      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmmi-9">q</span><sub><span 
+class="cmr-6">1</span></sub></div>     </td><td colspan="3" style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
+class="td11">      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmmi-9">q</span><sub><span 
+class="cmr-6">2</span></sub></div>      </td><td colspan="3" style="white-space:nowrap; text-align:center;" id="TBL-2-1-7"  
+class="td11">      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="cmmi-9">q</span><sub><span 
+class="cmr-6">3</span></sub></div>
+</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11"><span 
+class="cmmi-9">rel</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11"><span 
+class="cmr-9">BM25</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
+class="td11"><span 
+class="cmr-9">PR</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
+class="td11"><span 
+class="cmmi-9">rel</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-5"  
+class="td11"><span 
+class="cmr-9">BM25</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-6"  
+class="td11"><span 
+class="cmr-9">PR</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-7"  
+class="td11"><span 
+class="cmmi-9">rel</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-8"  
+class="td11"><span 
+class="cmr-9">BM25</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-9"  
+class="td11"><span 
+class="cmr-9">PR</span></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11"> <span 
+class="cmr-9">.80 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
+class="td11"><span 
+class="cmr-9">.20</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-5"  
+class="td11"> <span 
+class="cmr-9">.60 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-6"  
+class="td11"><span 
+class="cmr-9">.50</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-7"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-8"  
+class="td11"> <span 
+class="cmr-9">.65 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-9"  
+class="td11"><span 
+class="cmr-9">.45</span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-1"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11"> <span 
+class="cmr-9">.75  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
+class="td11"><span 
+class="cmr-9">.15</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-5"  
+class="td11"> <span 
+class="cmr-9">.60  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-6"  
+class="td11"><span 
+class="cmr-9">.47</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-7"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-8"  
+class="td11"> <span 
+class="cmr-9">.67  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-9"  
+class="td11"><span 
+class="cmr-9">.40</span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
+class="td11"> <span 
+class="cmr-9">0 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11"> <span 
+class="cmr-9">.65  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
+class="td11"><span 
+class="cmr-9">.05</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
+class="td11"> <span 
+class="cmr-9">1 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-5"  
+class="td11"> <span 
+class="cmr-9">.50  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-6"  
+class="td11"><span 
+class="cmr-9">.45</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-7"  
+class="td11"> <span 
+class="cmr-9">0 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-8"  
+class="td11"> <span 
+class="cmr-9">.60  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-9"  
+class="td11"><span 
+class="cmr-9">.35</span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-1"  
+class="td11"> <span 
+class="cmr-9">0 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
+class="td11"> <span 
+class="cmr-9">.65  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
+class="td11"><span 
+class="cmr-9">.05</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-4"  
+class="td11"> <span 
+class="cmr-9">0 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-5"  
+class="td11"> <span 
+class="cmr-9">.45  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-6"  
+class="td11"><span 
+class="cmr-9">.40</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-7"  
+class="td11"> <span 
+class="cmr-9">0 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-8"  
+class="td11"> <span 
+class="cmr-9">.40  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-9"  
+class="td11"><span 
+class="cmr-9">.15</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-1"  
+class="td11">  </td></tr></table></div>
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 45--><p class="indent" >   To introduce the new set of <span 
+class="cmti-10">rank-based </span>features, let us consider the example in
+Table&#x00A0;<a 
+href="#x1-10011">1<!--tex4ht:ref: tab:toy --></a>. The table illustrates a small training set of query-document feature vectors.
+It is made up of three queries with four candidate results each. For each document
+associated with a query, a binary relevance label <span 
+class="cmmi-10">rel </span>and two well-known features &#8211;
+BM25 and PageRank (PR) &#8211; are listed. During learning, a tree-based algorithm
+should find the rules that best separate relevant from irrelevant results. A simple
+decision stump &#8211; i.e., a tree with one node and two leaves &#8211; is not sufficient in
+this case, since a &#8220;minimal&#8221; classification tree with perfect accuracy is the
+following:
+<!--l. 58--><p class="noindent" ><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;         </span><span 
+class="cmtt-9">if</span> <span 
+class="cmr-9">BM25</span> <span 
+class="cmsy-9">&#x2265; </span><span 
+class="cmmi-9">.</span><span 
+class="cmr-9">75  </span><span 
+class="cmtt-9">then </span><span 
+class="cmr-9">1  </span><span 
+class="cmtt-9">else</span><br 
+class="newline" /><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;                 </span><span 
+class="cmtt-9">if</span> <span 
+class="cmr-9">PR</span> <span 
+class="cmsy-9">&#x2265; </span><span 
+class="cmmi-9">.</span><span 
+class="cmr-9">45  </span><span 
+class="cmtt-9">then </span><span 
+class="cmr-9">1  </span><span 
+class="cmtt-9">else </span><br 
+class="newline" /><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;                        </span><span 
+class="cmtt-9">if</span> <span 
+class="cmr-9">BM25</span> <span 
+class="cmsy-9">&#x2265; </span><span 
+class="cmmi-9">.</span><span 
+class="cmr-9">67  </span><span 
+class="cmtt-9">then </span><span 
+class="cmr-9">1  </span><span 
+class="cmtt-9">else </span><span 
+class="cmr-9">0</span>
+<!--l. 64--><p class="indent" >   Simpler but still effective trees can be obtained if we enrich the feature set
+associated with each pair (<span 
+class="cmmi-10">q,c</span>), <span 
+class="cmmi-10">c </span><span 
+class="cmsy-10">&#x2208;<img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub>, with new <span 
+class="cmti-10">rank-based </span>features. In
+our toy example, an optimal decision tree that achieves perfect accuracy is
+the one that classifies as relevant the documents with a PR score being
+at most 0.05 less than the best PR score in the same candidate set, that
+is:
+<!--l. 70--><p class="noindent" ><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;</span><span 
+class="cmr-9">&#x00A0;         </span><span 
+class="cmtt-9">if </span><span 
+class="cmcsc-10x-x-90">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">a</span><span 
+class="small-caps">x</span></span> <sub><span 
+class="cmr-6">PR</span></sub> <span 
+class="cmsy-9">&#x2264; </span><span 
+class="cmr-9">0</span><span 
+class="cmmi-9">.</span><span 
+class="cmr-9">05 </span><span 
+class="cmtt-9">then </span><span 
+class="cmr-9">1 </span><span 
+class="cmtt-9">else </span><span 
+class="cmr-9">0</span>
+<!--l. 74--><p class="noindent" >where <span 
+class="cmcsc-10">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">a</span><span 
+class="small-caps">x</span></span> <sub><span 
+class="cmr-7">PR</span></sub> measures the difference between each value of PR and the
+largest value assumed by PR in <span 
+class="cmsy-10"><img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub>. This last classifier does not improve the quality of
+the first one. On the other hand, it is much simpler and its evaluation requires much
+less time if <span 
+class="cmti-10">rank-based </span>features are available.
+<!--l. 76--><p class="indent" >   We propose four construction strategies to build new <span 
+class="cmti-10">rank-based features </span>for a
+given feature <span 
+class="cmmi-10">f </span><span 
+class="cmsy-10">&#x2208;<img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span>, occurring in the feature vector representing each pair (<span 
+class="cmmi-10">q,c</span>),
+where <span 
+class="cmmi-10">c </span><span 
+class="cmsy-10">&#x2208;<img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub>:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmcsc-10">R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub>. Feature <span 
+class="cmcsc-10">R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub> <span 
+class="cmsy-10">&#x2208; {</span>1<span 
+class="cmmi-10">,</span>2<span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,</span><span 
+class="cmsy-10">|<img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub><span 
+class="cmsy-10">|} </span>corresponds to the <span 
+class="cmti-10">rank  </span>of <span 
+class="cmmi-10">c</span>
+     after sorting <span 
+class="cmsy-10"><img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub> in <span 
+class="cmti-10">descending order </span>of <span 
+class="cmmi-10">f</span>.
+     </li>
+     <li class="itemize"><span 
+class="cmcsc-10">R<span 
+class="small-caps">e</span><span 
+class="small-caps">v</span>-R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub>. The same as <span 
+class="cmcsc-10">R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub>, but <span 
+class="cmsy-10"><img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub> is ordered in <span 
+class="cmti-10">ascending order</span>
+     of <span 
+class="cmmi-10">f</span>.
+     </li>
+     <li class="itemize"><span 
+class="cmcsc-10">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">i</span><span 
+class="small-caps">n</span></span> <sub><span 
+class="cmmi-7">f</span></sub>. Feature <span 
+class="cmcsc-10">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">i</span><span 
+class="small-caps">n</span></span> <sub><span 
+class="cmmi-7">f</span></sub> <span 
+class="cmsy-10">&#x2208; </span><span 
+class="msbm-10">&#x211D; </span>is given by the absolute value of
+     the difference between the value of <span 
+class="cmmi-10">f </span>and the <span 
+class="cmti-10">smallest value </span>of <span 
+class="cmmi-10">f </span>in <span 
+class="cmsy-10"><img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub>.
+     </li>
+     <li class="itemize"><span 
+class="cmcsc-10">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">a</span><span 
+class="small-caps">x</span></span> <sub><span 
+class="cmmi-7">f</span></sub>. The same as <span 
+class="cmcsc-10">D<span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span>-M<span 
+class="small-caps">i</span><span 
+class="small-caps">n</span></span> <sub><span 
+class="cmmi-7">f</span></sub>, but we consider the difference
+     with the <span 
+class="cmti-10">largest value </span>of <span 
+class="cmmi-10">f </span>in <span 
+class="cmsy-10"><img 
+src="cmsy10-43.png" alt="C" class="10x-x-43" /></span><sub><span 
+class="cmmi-7">q</span></sub>.</li></ul>
+<!--l. 86--><p class="indent" >   We expect that these new features can improve the scoring ability of the learned
+models since they contribute to give information about the whole set of candidates
+                                                                  
+
+                                                                  
+<span 
+class="cmmi-10">C</span><sub><span 
+class="cmmi-7">q</span></sub>, while other features give information limited to the single pairs (<span 
+class="cmmi-10">q,c</span>) with respect
+to the entire collection of indexed documents. We claim that they can capture
+<span 
+class="cmti-10">relatively better </span>or <span 
+class="cmti-10">relatively worse </span>concepts over the current candidate set. It is worth
+noting that <span 
+class="cmcsc-10">R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub> and <span 
+class="cmcsc-10">R<span 
+class="small-caps">e</span><span 
+class="small-caps">v</span>-R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span> <sub><span 
+class="cmmi-7">f</span></sub> are not mutually exclusive. If higher values of
+<span 
+class="cmmi-10">f </span>are better, the former could promote good documents, while the latter should
+demote bad documents.
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Efficiency of learned models</h3>
+<!--l. 99--><p class="noindent" >Figure&#x00A0;<a 
+href="#x1-20011">1<!--tex4ht:ref: fig:rbeff --></a> illustrates the quality in terms of <span 
+class="cmss-10">NDCG </span>of the <span 
+class="cmmi-10">&#x03BB;</span>-MART models trained on
+MSN/Fold&#x00A0;1 by using <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span>, <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+40</span></sup>, and <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+10</span></sup> (respectively the original feature
+set, and extended feature sets adding 40 or 10 rank-based features). We
+report the values of <span 
+class="cmss-10">NDCG</span>@50 obtained on the test set of MSN/Fold&#x00A0;1 as
+a function of the number of trees of the generated model. Note that the
+three curves stops in correspondence of a different number of trees: this is
+because the validation set is used to choose the number of trees in the final
+model.
+<!--l. 108--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-20011"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 110--><p class="noindent" ><img 
+src="../../archives/20150416b/effectivenessMSN1.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content">Effectiveness with features sets <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+40</span></sup>, <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+10</span></sup>, and <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>on MSN/Fold 1.</span></div><!--tex4ht:label?: x1-20011 -->
+                                                                  
+
+                                                                  
+<!--l. 112--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 114--><p class="indent" >   The benefit of our rank-based features shows up very early in the learning
+process. First, we note that the new feature sets <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+40</span></sup> and <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+10</span></sup> always produce
+models that are more effective than the one obtained by using the original feature set
+<span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>at smaller ensemble sizes. More importantly, the maximum quality of the model
+trained on <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /> </span>requires a number of trees that is about three times larger than the
+number of trees of the models trained on either <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+40</span></sup> or <span 
+class="cmsy-10"><img 
+src="cmsy10-46.png" alt="F" class="10x-x-46" /></span><sup><span 
+class="cmr-7">+10</span></sup> to obtain the same
+<span 
+class="cmss-10">NDCG</span>@50. This behaviour is very significant, since the number of trees directly
+impacts ranking efficiency. Document scoring requires in fact the traversal of all
+the trees of the model, and its cost is thus linearly proportional to their
+number.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-3000"></a>References</h3>
+<a 
+ id="x1-3000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xsigir15short"></a>Claudio Lucchese, Franco&#x00A0;Maria Nardini, Salvatore Orlando, Raffaele Perego,
+   and Nicola Tonellotto. Speeding up document ranking with rank-based features.
+   In <span 
+class="cmti-10">SIGIR &#8217;15: Proceedings of the 38th International ACM SIGIR Conference on</span>
+   <span 
+class="cmti-10">Research and Development in Information Retrieval</span>, 2015.
+</p>
+   </div>
+   </div>
+<!--l. 130--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20150416b/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416b/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416b/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150416b/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

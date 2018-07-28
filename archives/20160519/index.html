@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>SEL: a Unified Algorithm for Entity Linking and Saliency Detection</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">SEL: a Unified Algorithm for Entity Linking and
+Saliency Detection</h2>
+      <div class="author" > <span 
+class="cmr-12">Diego Ceccarelli, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />      <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br /><span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />       <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />       <span 
+class="cmr-12">Salvatore Trani, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">May 19 2016</span></div>
+   </div>
+<!--l. 10--><p class="indent" >   Accepted at <span 
+class="cmbx-10">DocEng &#8217;16: Proceedings of the 2015 ACM Symposium on</span>
+<span 
+class="cmbx-10">Document Engineering</span>&#x00A0;<span class="cite">[<a 
+href="#Xdoceng16-sel">1</a>]</span>.
+<!--l. 12--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>The <span 
+class="cmti-10">Entity Linking </span>task consists in automatically identifying and
+linking the entities mentioned in a text to their URIs in a given Knowledge Base,
+e.g., Wikipedia. Entity Linking has a large impact in several text analysis
+and information retrieval related tasks. This task is very challenging due to
+natural language ambiguity. However, not all the entities mentioned in a
+document have the same relevance and utility in understanding the topics being
+discussed. Thus, the related problem of identifying the most relevant entities
+present in a document, also known as <span 
+class="cmti-10">Salient Entities</span>, is attracting increasing
+interest.
+<!--l. 18--><p class="indent" >   In this paper we propose <span 
+class="cmss-10">SEL</span>, a novel supervised two-step algorithm
+comprehensively addressing both entity linking and saliency detection. The first step
+is based on a classifier aimed at identifying a set of candidate entities that are likely
+to be mentioned in the document, thus maximizing the precision of the method
+without hindering its recall. The second step is still based on machine learning, and
+aims at choosing from the previous set the entities that actually occur in the
+document. Indeed, we tested two different versions of the second step, one aimed at
+solving only the entity linking task, and the other that, besides detecting linked
+entities, also scores them according to their saliency. Experiments conducted
+on two different datasets show that the proposed algorithm outperforms
+state-of-the-art competitors, and is able to detect salient entities with high
+accuracy.
+   <div class="btSect">
+                                                                  
+
+                                                                  
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>References</h3>
+<a 
+ id="x1-1000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xdoceng16-sel"></a>Diego Ceccarelli, Claudio Lucchese, Salvatore Orlando, Raffaele Perego, and
+   Salvatore Trani. SEL: a unified algorithm for entity linking and saliency
+   detection. In <span 
+class="cmti-10">DocEng &#8217;16: Proceedings of the 2015 ACM Symposium on Document</span>
+   <span 
+class="cmti-10">Engineering</span>, 2016.
+</p>
+   </div>
+   </div>
+<!--l. 27--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20160519/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160519/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20160519/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160519/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

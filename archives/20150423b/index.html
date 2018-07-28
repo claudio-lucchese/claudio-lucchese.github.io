@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>QuickRank: a C++ Suite of Learning to Rank Algorithms</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">QuickRank: a C++ Suite of Learning to Rank
+Algorithms</h2>
+    <div class="author" > <span 
+class="cmr-12">Gabriele Capannini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />         <span 
+class="cmr-12">Domenico Dato, Tiscali S.p.A., Cagliari, Italy</span>
+<br />      <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />          <span 
+class="cmr-12">Monica Mori, Tiscali S.p.A., Cagliari, Italy</span>
+<br /><span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />    <span 
+class="cmr-12">Franco Maria Nardini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />       <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />      <span 
+class="cmr-12">Nicola Tonellotto, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">Apr. 23 2015</span></div>
+   </div>
+<!--l. 8--><p class="indent" >   Accepted at the <span 
+class="cmbx-10">6th Italian Information Retrieval Workshop, Cagliary,</span>
+<span 
+class="cmbx-10">Italy, 25&#8211;26 May 2015 </span><span class="cite">[<a 
+href="#Xquickrank15">1</a>]</span>.
+<!--l. 11--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>Ranking is a central task of many Information Retrieval (IR)
+problems, particularly challenging in the case of large-scale Web collections where it
+involves effectiveness requirements and efficiency constraints that are not common to
+other ranking-based applications. This paper describes <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span>, a C++ suite of
+efficient and effective Learning to Rank (<span 
+class="cmss-10">LtR</span>) algorithms that allows high-quality
+ranking functions to be devised from possibly huge training datasets. <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span>
+is a project with a double goal: i) answering Tiscali industrial need for a
+flexible and scalable <span 
+class="cmss-10">LtR </span>solution for learning ranking models from huge
+training datsets; ii) providing the IR research community with a flexible,
+extensible and efficient <span 
+class="cmss-10">LtR </span>framework to design <span 
+class="cmss-10">LtR </span>solutions and fairly compare
+the performance of different algorithms and ranking models. This paper
+presents <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>design choices and report about some preliminary use
+experiences.
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>The <span 
+class="cmss-10">QuickRank </span>Framework</h3>
+<!--l. 15--><p class="noindent" ><span 
+class="cmbx-10">Learning Algorithms</span>. <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>provides open-source C++ multi-threaded
+implementations of <span 
+class="cmcsc-10">GBRT</span>, <span 
+class="cmmi-10">&#x03BB;</span><span 
+class="cmcsc-10">-MART</span>, and <span 
+class="cmcsc-10">O-</span><span 
+class="cmmi-10">&#x03BB;</span><span 
+class="cmcsc-10">-MART </span>(i.e., oblivious <span 
+class="cmmi-10">&#x03BB;</span><span 
+class="cmcsc-10">-MART</span>). It
+is worth mentioning that no implementation of the <span 
+class="cmcsc-10">O-</span><span 
+class="cmmi-10">&#x03BB;</span><span 
+class="cmcsc-10">-MART </span>algorithm was
+                                                                  
+
+                                                                  
+previously made publicly available. For all these algorithms, <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>accepts
+training sets in the SVM-light format and produces a XML file storing the learned
+ranking model.
+<!--l. 17--><p class="noindent" ><span 
+class="cmbx-10">Document Scoring Functions</span>. <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>also provides a framework for the
+cost evaluation <span 
+class="cmti-10">at scoring time </span>of the learned models. The evaluation is
+implemented as a two-step process. During the first step, a tree-based model is
+converted in a C++ plugin function implementing the scoring of a given
+document. <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>implements three state-of-the-art code generation
+strategies. The first strategy is named <span 
+class="cmcsc-10">C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span>G<span 
+class="small-caps">e</span><span 
+class="small-caps">n</span></span>. Each decision tree is translated
+into a sequence of C++ if-then-else blocks. The second strategy is <span 
+class="cmcsc-10">VP<span 
+class="small-caps">r</span><span 
+class="small-caps">e</span><span 
+class="small-caps">d</span></span>
+algorithm. A decision tree of maximum depth <span 
+class="cmmi-10">d </span>is converted into a <span 
+class="cmmi-10">d</span>-step
+traversal of an array storing the tree&#8217;s nodes. The third strategy only applies to
+<span 
+class="cmcsc-10">O-</span><span 
+class="cmmi-10">&#x03BB;</span><span 
+class="cmcsc-10">-MART</span>. In this case, the <span 
+class="cmmi-10">d </span>tests are used to set a bitmask of <span 
+class="cmmi-10">d </span>bits. The
+integer value of the final bitmask is then exploited to look up the value
+from a vector of 2<sup><span 
+class="cmmi-7">d</span></sup> outcomes, i.e., to select the proper leaf of the oblivious
+tree. During the second step, the generated source code is compiled and
+linked with the <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>framework. The compiled function is invoked
+by the framework on each document of the given test set, and the total
+scoring time is measured. Evaluating the cost of scoring time of a ranking
+model is important in several application scenarios, and it is receiving more
+attention in the IR community. We believe that <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>can both provide
+implementation of state-of-the-art algorithms and serve as a fair evaluation
+framework.
+<!--l. 39--><p class="indent" >   To the best of our knowledge, <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>is the first framework addressing both
+the learning and the scoring processes. <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span> </span>source code is publicly available
+for non commercial uses under a Reciprocal Public License 1.5 at the <span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span>
+<a 
+href="http://quickrank.isti.cnr.it" >website</a>.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>References</h3>
+<a 
+ id="x1-2000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xquickrank15"></a>Gabriele Capannini, Domenico Dato, Claudio Lucchese, Monica Mori,
+   Franco&#x00A0;Maria Nardini, Salvatore Orlando, Raffaele Perego, and Nicola Tonellotto.
+   QuickRank: a C++ suite of learning to rank algorithms. <span 
+class="cmti-10">IIR &#8217;15: 6th Italian</span>
+   <span 
+class="cmti-10">Information Retrieval Workshop</span>, 2015.
+</p>
+   </div>
+   </div>
+<!--l. 48--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20150423b/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423b/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423b/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20150423b/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

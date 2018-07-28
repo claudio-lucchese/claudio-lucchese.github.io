@@ -1,0 +1,664 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>PaNDa+:
+A unifying framework for mining approximate top-k binary patterns</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">PaNDa+:<br />
+A unifying framework for mining approximate
+top-k binary patterns</h2>
+      <div class="author" ><span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br /><span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />       <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">Nov. 13 2013</span></div>
+   </div>
+<!--l. 68--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>A major mining task for binary matrixes is the extraction of
+approximate top-<span 
+class="cmmi-10">k </span>patterns that are able to concisely describe the input data. The
+top-<span 
+class="cmmi-10">k </span>pattern discovery problem is commonly stated as an optimization one,
+where the goal is to minimize a given cost function, e.g., the accuracy of the
+data description. In this work, we review several greedy algorithms, and
+discuss <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span>, an algorithmic framework able to optimize different cost
+functions generalized into a unifying formulation. We evaluated the goodness
+of the algorithm by measuring the quality of the extracted patterns. We
+adapted standard quality measures to assess the capability of the algorithm
+to discover both the items and transactions of the patterns embedded in
+the data. The evaluation was conducted on synthetic data, where patterns
+were artificially embedded, and on real-world text collection, where each
+document is labeled with a topic. Finally, in order to qualitatively evaluate
+the usefulness of the discovered patterns, we exploited <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> to detect
+overlapping communities in a bipartite network. The results show that <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span>
+is able to discover high-quality patterns in both synthetic and real-world
+datasets.
+<!--l. 85--><p class="indent" >   If you want more information about <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span>, please check the full paper&#x00A0;<span class="cite">[<a 
+href="#Xtkde14">3</a>]</span>.
+<span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> is an imporvement of our previous works <span class="cite">[<a 
+href="#Xsdm10">2</a>,&#x00A0;<a 
+href="#Xsac10">1</a>]</span>. If you want to download
+the source code, go to the <span 
+class="cmti-10">&#8221;Implementation source code and usage&#8221; </span>section below&#x00A0;<a 
+href="#x1-2000doc"><!--tex4ht:ref: sec:usage --></a>. If
+you use this software, please cite&#x00A0;<span class="cite">[<a 
+href="#Xtkde14">3</a>]</span> in your work.
+<!--l. 88--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-21"></a>
+                                                                  
+
+                                                                  
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"><col 
+id="TBL-2-2"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11">       <img 
+src="../../archives/20131113/dblp_graph_x_0_5_1_0_1_0.png" alt="PIC"  
+>           </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11">                                       <img 
+src="../../archives/20131113/dblp_graph_x_0_5_0_5_0_8.png" alt="PIC"  
+>                                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11">(a): <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> = 1<span 
+class="cmmi-10">.</span>0,&#x00A0;<span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub> = 1<span 
+class="cmmi-10">.</span>0</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11">                                (b): <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> = 0<span 
+class="cmmi-10">.</span>5,&#x00A0;<span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub> = 0<span 
+class="cmmi-10">.</span>8                                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td colspan="2" style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
+class="td11"><div class="multicolumn"  style="white-space:nowrap; text-align:center;"> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content"> the top-16 patterns mined by <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span>&#x00A0;<span 
+class="cmmi-10">J</span><sub><span 
+class="cmmi-7">E</span></sub> from the DBLP database with different noise thresholds <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> and <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub>.</span></div><!--tex4ht:label?: x1-21 --></div></td></tr></table>
+</div>
+                                                                  
+
+                                                                  
+<!--l. 97--><p class="indent" >   </div><hr class="endfigure">
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Patterns extracted from a real social network</h3>
+<!--l. 101--><p class="noindent" >We discuss the results of using <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> as a tool to identify communities from
+bipartite graphs extracted from a real-wold dataset. To this end, we mined a dump of
+the DBLP database, spanning a period that goes from January 2008 to July 2013.
+We built a bipartite graph of <span 
+class="cmti-10">authors </span>and <span 
+class="cmti-10">publication venues</span>, where an edge links
+an author <span 
+class="cmmi-10">a </span>to a publication venue <span 
+class="cmmi-10">v </span><span 
+class="cmti-10">iff  </span><span 
+class="cmmi-10">a </span>published at least a paper at
+conference/journal <span 
+class="cmmi-10">v </span>regardless the year of publication. We discarded authors who
+published in less than 5 venues, and venues that hosted less than 40 distinct authors.
+We also removed the venue &#8220;Computing Research Repository&#8221; (CoRR), which is a
+free online multi-disciplinary repository and it is not useful to our purpose of
+detecting topical communities. From this bipartite graph, we generated the
+incidence binary matrix <span 
+class="cmsy-10"><img 
+src="cmsy10-44.png" alt="D" class="10x-x-44" /></span>, where rows are authors and columns are venues. The
+resulting binary matrix <span 
+class="cmsy-10"><img 
+src="cmsy10-44.png" alt="D" class="10x-x-44" /> </span>includes <span 
+class="cmmi-10">N </span>= 112<span 
+class="cmmi-10">,</span>261 authors, and <span 
+class="cmmi-10">M </span>= 4<span 
+class="cmmi-10">,</span>283
+venues.
+<!--l. 114--><p class="indent" >   We run <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> <span 
+class="cmmi-10">J</span><sub><span 
+class="cmmi-7">E</span></sub> (with <span 
+class="cmmi-10">R </span>= 20 and correlation item ordering) by varying the
+two maximum noise thresholds <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> and <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub>. After testing several combinations, we
+observed that all of them are very useful for studying, inspecting and understanding
+the diverse overlapping social communities present in the bipartite DBLP graph.
+Small noise thresholds generate small communities covering a very specific
+topic. By increasing the noise thresholds, it is possible to analyze how the
+communities merge together into wider topics. Due to space constraints, we
+only discuss two parameter configurations: (i) <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> = 1<span 
+class="cmmi-10">.</span>0, <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub> = 1<span 
+class="cmmi-10">.</span>0, and (ii)
+<span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">r</span></sub> = 0<span 
+class="cmmi-10">.</span>5, <span 
+class="cmmi-10">&#x03F5;</span><sub><span 
+class="cmmi-7">c</span></sub> = 0<span 
+class="cmmi-10">.</span>8. In the case <span 
+class="cmti-10">(i) </span>we do not give any constraint over the
+amount of noise contained in each pattern, so that the noise is only limited by
+cost function <span 
+class="cmmi-10">J</span><sub><span 
+class="cmmi-7">E</span></sub>. In the case <span 
+class="cmti-10">(ii) </span>instead, any extracted pattern should
+contain authors that published in at least 50% of the pattern&#8217;s venues, and
+venues that contain at least 20% of the pattern&#8217;s authors. The setting <span 
+class="cmti-10">(ii) </span>of
+the two parameters is reasonable, considering that there are many more
+authors than venues. The algorithms <span 
+class="cmcsc-10">A<span 
+class="small-caps">s</span><span 
+class="small-caps">s</span><span 
+class="small-caps">o</span> </span>and <span 
+class="cmcsc-10">H<span 
+class="small-caps">y</span><span 
+class="small-caps">p</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span>+ </span>were not able to
+complete within one hour and therefore they are not discussed here. This is
+because their implementation does not handle efficently large and sparse
+data.
+<!--l. 129--><p class="indent" >   It is worth remarking that DBLP does not always disambiguate homonymous
+authors. As a result, <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> extracted a pattern with more than 50 venues and as
+little as 200 authors. By manual inspection, we found that the venues of the pattern
+covered very different topics, and that authors has common Chinese surnames (e.g.,
+Li, Liu, Wang, Yang, Zhang, etc.). This pattern was clearly due to the presence
+of homonymous authors, and we thus did not consider it in the following
+discussion.
+<!--l. 136--><p class="indent" >   Fig.&#x00A0;<a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a> shows the top-16 patterns extracted by <span 
+class="cmcsc-10">P<span 
+class="small-caps">a</span>ND<span 
+class="small-caps">a</span></span><span 
+class="cmr-7">+</span> <span 
+class="cmmi-10">J</span><sub><span 
+class="cmmi-7">E</span></sub>. Each pattern is
+represented by a node, whose label was manually chosen according to the venues
+composing it. The size of the node is proportional to the number of authors
+                                                                  
+
+                                                                  
+contained, whereas the number of venues is shown between parentheses. The sharing
+of authors among patterns is instead captured by the thickness of the edges. Finally,
+nodes are placed according to their extraction order, the first being the rightmost and
+then proceeding counter-clock wise.
+<!--l. 143--><p class="indent" >   When using the larger noise thresholds of case <span 
+class="cmti-10">(i)</span>, see Fig.&#x00A0;<a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a>a, the extracted
+patterns are larger. <span 
+class="cmti-10">Communications </span>is the largest pattern, and it has a significant
+sharing of authors with <span 
+class="cmti-10">Networking</span>. Despite the strong sharing of authors, there is
+only one overlapping venue (ICC). By inspecting the patterns&#8217; venues in Table&#x00A0;<a 
+href="#x1-10011">1<!--tex4ht:ref: tab:venue-clusters --></a>, the
+reader can appreciate that although the topics of the two patterns are related, they
+are separated enough: the former is concerned with low level signal transmissions,
+whereas the latter mainly regards network protocols. Other strong links are present
+between <span 
+class="cmti-10">Operational Research </span>and <span 
+class="cmti-10">Neural Networks </span>and between <span 
+class="cmti-10">Pattern Recognition</span>
+and <span 
+class="cmti-10">Communications</span>.
+<!--l. 150--><p class="indent" >   Interestingly enough, the IEEE TKDE journal falls into the <span 
+class="cmti-10">Data Mining &amp;</span>
+<span 
+class="cmti-10">Management </span>pattern. The cluster of venues appears to be very reasonable, including
+some information retrieval conferences (e.g., WSDM). Also, it contains the most
+influential authors in the Data Mining field according to Microsoft Academic Search:
+Jiawei Han, Philip S. Yu, Rakesh Agrawal, Christos Faloutsos, Hans-Peter Kriegel,
+Eamonn J. Keogh, George Karypis, and Heikki Mannila. Finally, readers of this
+journal may appreciate the quality of the venue groups <span 
+class="cmti-10">Algorithmica </span>and <span 
+class="cmti-10">High</span>
+<span 
+class="cmti-10">Performace Computing</span>.
+<!--l. 156--><p class="indent" >   Fig.&#x00A0;<a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a>b shows the top-16 patterns extracted with the less tolerant configuration
+of case <span 
+class="cmti-10">(ii)</span>. Due to space constraints, we do not illustrate in detail their
+venue composition. We observe, that the extracted patterns have a finer
+granularity. The previous <span 
+class="cmti-10">Communications </span>related clusters are now separated in
+more focused groups: <span 
+class="cmti-10">Wireless Networks</span>, which includes ICC, VTC Spring,
+GLOBECOM, and WCNC, <span 
+class="cmti-10">Communications</span>, made up of ICC, GLOBECOM, IEEE
+Communications Letters, and IEEE Transactions on Communications, <span 
+class="cmti-10">Vehicular</span>
+<span 
+class="cmti-10">Technology</span>, composed of CC, PIMRC, IEEE Transactions on Vehicular Technology
+and IEEE Transactions on Wireless Communications, and, finally, <span 
+class="cmti-10">Signal</span>
+<span 
+class="cmti-10">Processing</span>, which is composed of ICASSP and IEEE Transactions on Signal
+Processing.
+<!--l. 166--><p class="indent" >   Another interesting example is given by the <span 
+class="cmti-10">Pattern Recognition </span>cluster, which is
+now separated from the 3 related sub-fields of <span 
+class="cmti-10">Signal Processing</span>, <span 
+class="cmti-10">Audio Processing</span>
+and <span 
+class="cmti-10">Image Processing</span>, each of them having a large author overlap with the new more
+focused <span 
+class="cmti-10">Pattern Recognition </span>pattern. Note is also well connected to <span 
+class="cmti-10">Wireless</span>
+<span 
+class="cmti-10">Networks</span>.
+<!--l. 168--><p class="indent" >   Finally, note that in both Fig.&#x00A0;<a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a>a and Fig.&#x00A0;<a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a>b there is a pattern labeled
+by <span 
+class="cmti-10">IEICE</span>, composed of a single venue, namely IEICE Transactions, which
+contains an abnormal number of authors (about 6,000). It is a publication of
+an Asiatic organization which mainly contains papers on electronics and
+communications.
+                                                                  
+
+                                                                  
+<!--l. 174--><p class="indent" >   <a 
+ id="x1-10011"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"><col 
+id="TBL-3-2"><col 
+id="TBL-3-3"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td colspan="3" style="white-space:nowrap; text-align:center;" id="TBL-3-1-1"  
+class="td11">                              <div class="multicolumn"  style="white-space:nowrap; text-align:center;"> <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content">Some groups of publication venues referring to Fig. <a 
+href="#x1-21">1<!--tex4ht:ref: fig:DBLP --></a>a.</span></div><!--tex4ht:label?: x1-10011 --></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-1"  
+class="td11"><span 
+class="cmbx-9">Topic (#Venues)    </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-2"  
+class="td11"><span 
+class="cmbx-9">Group of Publication Venues                                                                      </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-3"  
+class="td11"><span 
+class="cmbx-9">No. of Authors</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-1"  
+class="td11"><span 
+class="cmr-9">Communication (15)   </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-2"  
+class="td11"><span 
+class="cmr-9">ICC, IEEE Transactions on Signal Processing, VTC Fall, VTC Spring, IEICE Transactions,    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-3"  
+class="td11">     <span 
+class="cmr-9">6373        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-2"  
+class="td11"><span 
+class="cmr-9">EURASIP J. Adv. Sig. Proc., ICASSP, IEEE T. Vehicular Technology, WCNC, PIMRC,        </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-5-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-5-2"  
+class="td11"><span 
+class="cmr-9">IEEE Transactions on Wireless Communications, GLOBECOM,                                        </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-6-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-6-2"  
+class="td11"><span 
+class="cmr-9">IEEE Communications Letters, EURASIP J. Wireless Comm. and Networking,                    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-7-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-7-2"  
+class="td11"><span 
+class="cmr-9">IEEE Transactions on Communications                                                                         </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-8-1"  
+class="td11"><span 
+class="cmr-9">Wireless Networks (12)</span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-8-2"  
+class="td11"><span 
+class="cmr-9">EURASIP J. Wireless Comm. and Networking, IEEE Transactions on Communications,         </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-3"  
+class="td11">     <span 
+class="cmr-9">2524        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-2"  
+class="td11"><span 
+class="cmr-9">VTC Fall, VTC Spring,IEEE Communications Letters, WCNC,                                         </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-9-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-10-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-10-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-10-2"  
+class="td11"><span 
+class="cmr-9">Wireless Personal Communications, PIMRC, IEEE Transactions on Wireless Communications,</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-10-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-11-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-11-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-11-2"  
+class="td11"><span 
+class="cmr-9">GLOBECOM, Wireless Sensor Network, IEEE T. Vehicular Technology                              </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-11-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-12-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-12-1"  
+class="td11"><span 
+class="cmr-9">Networking (9)           </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-12-2"  
+class="td11"><span 
+class="cmr-9">ICC, IEEE Trans. Parallel Distrib. Syst., IEEE Journal on Selected Areas in Communications,</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-12-3"  
+class="td11">     <span 
+class="cmr-9">2509        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-13-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-13-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-13-2"  
+class="td11"><span 
+class="cmr-9">Computer Networks, Computer Communications, Int. Journal of Network Management,         </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-13-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-14-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-14-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-14-2"  
+class="td11"><span 
+class="cmr-9">IEEE Trans. Mob. Comput., IEEE/ACM Trans. Netw., INFOCOM                                    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-14-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-15-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-15-1"  
+class="td11"><span 
+class="cmr-9">Data Mining &amp;          </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-15-2"  
+class="td11"><span 
+class="cmr-9">CIKM, AAAI, EDBT, SIGIR, ICDE, SIGMOD Conference, WSDM, ICDM, MLDM,             </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-15-3"  
+class="td11">     <span 
+class="cmr-9">2178        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-16-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-16-1"  
+class="td11"><span 
+class="cmr-9">Management (13)       </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-16-2"  
+class="td11"><span 
+class="cmr-9">WWW (Companion Volume), PVLDB, IEEE Trans. Knowl. Data Eng., KDD                      </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-16-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-17-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-17-1"  
+class="td11"><span 
+class="cmr-9">Algorithmica (15)       </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-17-2"  
+class="td11"><span 
+class="cmr-9">Electronic Colloquium on Computational Complexity (ECCC), Inf. Process. Lett., ISAAC,     </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-17-3"  
+class="td11">     <span 
+class="cmr-9">1644        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-18-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-18-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-18-2"  
+class="td11"><span 
+class="cmr-9">Theory Comput. Syst., FOCS, STACS, ESA, Theor. Comput. Sci., APPROX-RANDOM,       </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-18-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-19-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-19-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-19-2"  
+class="td11"><span 
+class="cmr-9">STOC, SODA, ACM Transactions on Algorithms, SIAM J. Comput., ICALP (1),                 </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-19-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-20-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-20-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-20-2"  
+class="td11"><span 
+class="cmr-9">Algorithmica                                                                                                            </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-20-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-21-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-21-1"  
+class="td11"><span 
+class="cmr-9">High Performace         </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-21-2"  
+class="td11"><span 
+class="cmr-9">IEEE Trans. Computers, IPDPS, IPDPS Workshops, MASCOTS,                                      </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-21-3"  
+class="td11">     <span 
+class="cmr-9">1106        </span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-22-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-22-1"  
+class="td11"><span 
+class="cmr-9">Computing (11)         </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-22-2"  
+class="td11"><span 
+class="cmr-9">IEEE Trans. Parallel Distrib. Syst., SC, J. Parallel Distrib. Comput., ICPP, CCGRID,           </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-22-3"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-23-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-23-1"  
+class="td11">                    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-23-2"  
+class="td11"><span 
+class="cmr-9">ICPADS, Concurrency and Computation: Practice and Experience                                     </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-23-3"  
+class="td11">               </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-24-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-24-1"  
+class="td11">                    </td></tr></table>
+</div>
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Implementation source code and usage</h3>
+<a 
+ id="x1-2000doc"></a>
+<!--l. 241--><p class="noindent" >The source code of the algorithm can be downloaded here: <a 
+href="../../downloads/panda.tgz" >panda.tgz</a>. <a 
+href="http://www.swig.org/" >SWIG</a> is
+required to compile the source code. The input format is the usual ascii format of
+FIMI competition. Below, the options of the algorithm implemetation.
+                                                                  
+
+                                                                  
+   <div class="verbatim" id="verbatim-1">
+#&#x00A0;**&#x00A0;PaNDa&#x00A0;Copyright&#x00A0;(C)&#x00A0;2009&#x00A0;Claudio&#x00A0;Lucchese
+&#x00A0;<br />#&#x00A0;**&#x00A0;Error-tolerant&#x00A0;frequent&#x00A0;itemsets&#x00A0;discovery.
+&#x00A0;<br />
+&#x00A0;<br />usage:&#x00A0;./panda
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-d&#x00A0;&#x003C;dataset&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;input&#x00A0;data&#x00A0;file&#x00A0;(MANDATORY)
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-k&#x00A0;&#x003C;#patterns&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-1:infinity,&#x00A0;def:-1
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-s&#x00A0;&#x003C;strategy&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;f&#x00A0;-&#x00A0;for&#x00A0;frequency,&#x00A0;c&#x00A0;-&#x00A0;for&#x00A0;child&#x00A0;frequency,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;o&#x00A0;-&#x00A0;for&#x00A0;correlated,&#x00A0;h&#x00A0;-&#x00A0;for&#x00A0;charm
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;def:f
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-r&#x00A0;&#x003C;#&#x00A0;rnd&#x00A0;iter&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;0:&#x00A0;no&#x00A0;randomness,&#x00A0;def:0
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-c&#x00A0;&#x003C;cost&#x00A0;f&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;1&#x00A0;-&#x00A0;norm&#x00A0;1,&#x00A0;w&#x00A0;-&#x00A0;norm&#x00A0;s&#x00A0;with&#x00A0;weight,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;2&#x00A0;-&#x00A0;norm&#x00A0;2,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;x&#x00A0;-&#x00A0;typed&#x00A0;xor,&#x00A0;n&#x00A0;-&#x00A0;naive&#x00A0;xor
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;def:1
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-w&#x00A0;&#x003C;weight&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;weight&#x00A0;to&#x00A0;be&#x00A0;used&#x00A0;for&#x00A0;the&#x00A0;"-c&#x00A0;w"&#x00A0;option
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-o&#x00A0;&#x003C;output&#x003E;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;def:&#x00A0;non&#x00A0;output&#x00A0;file
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-a&#x00A0;&#x003C;data&#x00A0;struct&#x003E;&#x00A0;&#x00A0;&#x00A0;f&#x00A0;-&#x00A0;for&#x00A0;fptree,&#x00A0;v&#x00A0;-&#x00A0;for&#x00A0;full&#x00A0;vertical
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;def:f
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-y&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;row&#x00A0;tolerance&#x00A0;ratio
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-t&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;column&#x00A0;tolerance&#x00A0;ratio
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;-v&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;verbose&#x00A0;mode.&#x00A0;Outputs&#x00A0;cost&#x00A0;per&#x00A0;iteration.
+</div>
+<!--l. 267--><p class="nopar" >
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-3000"></a>References</h3>
+<a 
+ id="x1-3000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xsac10"></a>Claudio Lucchese, Salvatore Orlando, and Raffaele Perego. A generative
+   pattern model for mining binary datasets. In <span 
+class="cmti-10">SAC &#8217;10: Proceedings of the </span>25<sup><span 
+class="cmmi-7">th</span></sup>
+   <span 
+class="cmti-10">ACM Symposium on Applied Computing</span>, March 2010.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xsdm10"></a>Claudio Lucchese, Salvatore Orlando, and Raffaele Perego. Mining top-k
+   patterns from binary datasets in presence of noise. In <span 
+class="cmti-10">SDM &#8217;10: Proceedings of</span>
+   <span 
+class="cmti-10">the 2010 SIAM International Conference on Data Mining</span>, April 2010. (best
+   12).
+                                                                  
+
+                                                                  
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xtkde14"></a>Claudio Lucchese, Salvatore Orlando, and Raffaele Perego. A unifying
+   framework for mining approximate top-k binary patterns. <span 
+class="cmti-10">IEEE Transactions On</span>
+   <span 
+class="cmti-10">Knowledge and Data Engineering</span>, 26(12):2900&#8211;2913, 2014.
+</p>
+   </div>
+   </div>
+<!--l. 273--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20131113/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20131113/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20131113/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20131113/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Quality versus efficiency in document scoring with learning-to-rank models</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Quality versus efficiency in document scoring
+with learning-to-rank models</h2>
+<div class="author" > <span 
+class="cmr-12">Gabriele Capannini, Innovation Design och Teknik (IDT), M</span><span 
+class="cmr-12">älardalens h</span><span 
+class="cmr-12">ögskola, V</span><span 
+class="cmr-12">ästeras, Sweden</span>
+<br />                       <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                     <span 
+class="cmr-12">Franco Maria Nardini, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                  <span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />                        <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                       <span 
+class="cmr-12">Nicola Tonellotto, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">May 18 2016</span></div>
+   </div>
+<!--l. 9--><p class="indent" >   Journal paper accepted at <span 
+class="cmbx-10">Information Processing &amp; Management</span>&#x00A0;<span class="cite">[<a 
+href="#Xipm16">1</a>]</span>.
+<!--l. 11--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>Learning-to-Rank (LtR) techniques leverage machine learning
+algorithms and large amounts of training data to induce high-quality ranking
+functions. Given a set of documents and a user query, these functions are able
+to precisely predict a score for each of the documents, in turn exploited
+to effectively rank them. Although the scoring efficiency of LtR models is
+critical in several applications - e.g., it directly impacts on response time and
+throughput of Web query processing  it has received relatively little attention so
+far.
+<!--l. 14--><p class="indent" >   The goal of this work is to experimentally investigate the scoring efficiency of LtR
+models along with their ranking quality. Specifically, we show that machine-learned
+ranking models exhibit a quality versus efficiency trade-off. For example, each family
+of LtR algorithms has tuning parameters that can influence both effectiveness and
+efficiency, where higher ranking quality is generally obtained with more complex and
+expensive models. Moreover, LtR algorithms that learn complex models, such as
+those based on forests of regression trees, are generally more expensive and more
+effective than other algorithms that induce simpler models like linear combination of
+features.
+<!--l. 16--><p class="indent" >   We extensively analyze the quality versus efficiency trade-off of a wide spectrum
+of state-of-the-art LtR, and we propose a sound methodology to devise the
+most effective ranker given a time budget. To guarantee reproducibility, we
+used publicly available datasets and we contribute an open source C++
+framework providing optimized, multi-threaded implementations of the most
+effective tree-based learners: Gradient Boosted Regression Trees (GBRT),
+Lambda-Mart (<span 
+class="cmmi-10">&#x03BB;</span>-MART), and the first public-domain implementation of Oblivious
+                                                                  
+
+                                                                  
+Lambda-Mart (&#x03A9;<sub><span 
+class="cmmi-7">&#x03BB;</span></sub>-MART), an algorithm that induces forests of oblivious regression
+trees.
+<!--l. 18--><p class="indent" >   We investigate how the different training parameters impact on the quality versus
+efficiency trade-off, and provide a thorough comparison of several algorithms
+in the quality-cost space. The experiments conducted show that there is
+not an overall best algorithm, but the optimal choice depends on the time
+budget.
+<!--l. 20--><p class="indent" >   The source code of algorithms&#8217; implementations is made available as part of
+<span 
+class="cmcsc-10">Q<span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">k</span>R<span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">k</span></span>: <a 
+href="http://quickrank.isti.cnr.it/" class="url" ><span 
+class="cmtt-10">http://quickrank.isti.cnr.it/</span></a>.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>References</h3>
+<a 
+ id="x1-1000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xipm16"></a>Gabriele Capannini, Claudio Lucchese, Franco&#x00A0;Maria Nardini, Salvatore
+   Orlando, Raffaele Perego, and Nicola Tonellotto. Quality versus efficiency in
+   document scoring with learning-to-rank models. <span 
+class="cmti-10">Information Processing &amp;</span>
+   <span 
+class="cmti-10">Management</span>, 2016.
+</p>
+   </div>
+   </div>
+<!--l. 25--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20160518/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160518/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20160518/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160518/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+

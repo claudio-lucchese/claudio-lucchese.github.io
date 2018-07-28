@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head> <link rel="stylesheet" type="text/css" href="../../css/style.css"> <title>Polarized User and Topic Tracking in Twitter</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+<!--l. 1--><p class="noindent" ><div id=content>
+<!--l. 3--><p class="indent" >   <div id=menu>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="../../index.html" ><span 
+class="cmcsc-10x-x-120">H<span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../publications/index.html" ><span 
+class="cmcsc-10x-x-120">P<span 
+class="small-caps">u</span><span 
+class="small-caps">b</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">t</span><span 
+class="small-caps">i</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">s</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../research/index.html" ><span 
+class="cmcsc-10x-x-120">R<span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> C<span 
+class="small-caps">o</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../teaching/index.html" ><span 
+class="cmcsc-10x-x-120">T<span 
+class="small-caps">e</span><span 
+class="small-caps">a</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../archives/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">r</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">i</span><span 
+class="small-caps">v</span><span 
+class="small-caps">e</span></span></a>
+     </li>
+     <li class="itemize"><a 
+href="../../about/index.html" ><span 
+class="cmcsc-10x-x-120">A<span 
+class="small-caps">b</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span> M<span 
+class="small-caps">e</span></span></a></li></ul>
+<!--l. 12--><p class="noindent" ></div>      <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Polarized User and Topic Tracking in Twitter</h2>
+<div class="author" ><span 
+class="cmr-12">Mauro Coletto, IMT Institute for Advanced Studies, Lucca and HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                      <span 
+class="cmr-12">Claudio Lucchese, HPC Lab., ISTI-CNR, Pisa, Italy</span>
+<br />                 <span 
+class="cmr-12">Salvatore Orlando, DAIS - Universit</span><span 
+class="cmr-12">à Ca&#8217; Foscari Venezia, Italy</span>
+<br />                       <span 
+class="cmr-12">Raffaele Perego, HPC Lab., ISTI-CNR, Pisa, Italy</span></div><br />
+<div class="date" ><span 
+class="cmr-12">Mar. 31 2016</span></div>
+   </div>
+<!--l. 9--><p class="indent" >   Short paper accepted at <span 
+class="cmbx-10">SIGIR &#8217;16: ACM Conference on Research and</span>
+<span 
+class="cmbx-10">Development in Information Retrieval</span>&#x00A0;<span class="cite">[<a 
+href="#Xsigir16-polarized">1</a>]</span>.
+<!--l. 12--><p class="indent" >   <span 
+class="cmbx-10">Abstract. </span>Digital traces of conversations in micro-blogging platforms
+and in OSNs provide information about user opinion with a high degree of
+resolution. These information sources can be exploited to understand and
+monitor collective behaviors. In this work, we focus on <span 
+class="cmti-10">polarization classes</span>, i.e.,
+those topics that require the user to side exclusively with one position. The
+proposed method provides an iterative classification of users and keywords: first,
+<span 
+class="cmti-10">polarized users </span>are identified, then <span 
+class="cmti-10">polarized keywords </span>are discovered by
+monitoring the activities of previously classified users. This method thus allows to
+track users and topics over time. We report several experiments conducted
+on two Twitter datasets during political election time-frames. We measure
+the user classification accuracy on a golden set of users and we provide an
+analysis of the relevance of the extracted keywords for the ongoing political
+discussion.
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>The <span 
+class="cmcsc-10">PTR </span>algorithm</h3>
+<!--l. 29--><p class="noindent" >Our method requires some initial <span 
+class="cmti-10">seed topics </span>that identify the classes of interests. We
+propose to identify them with a single textual keyword for each class. Although each
+keyword identifies a topic, e.g., a political party, it is not sufficient to correctly
+classify users.
+<!--l. 33--><p class="indent" >   The Polarization TRacker (<span 
+class="cmcsc-10">PTR</span>) algorithm iterates the two classification steps,
+namely <span 
+class="cmcsc-10">U<span 
+class="small-caps">s</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span>C<span 
+class="small-caps">l</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">s</span></span> and <span 
+class="cmcsc-10">H<span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">h</span><span 
+class="small-caps">t</span><span 
+class="small-caps">a</span><span 
+class="small-caps">g</span><span 
+class="small-caps">s</span>C<span 
+class="small-caps">l</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">s</span></span>, that continuously improve the
+classification into polarization classes of users and of the hashtags they used. The
+goal of the first step is to identify polarized users on the basis of the given hashtags.
+First, we identify polarized tweets, which mention seed hashtags. We discard all of
+those tweets which contain hashtags belonging to more than one polirized class. We
+                                                                  
+
+                                                                  
+thus measure the user polarization, i.e., if for a polarization class, the number of
+tweets by a user is significantly larger than for any other class, then the user is
+labeled with the corresponding class. The goal the second step is to process
+all the hashtags adopted by classified users in order to discover a new set
+of discriminating hashtags. We take into considerations all the hashtags
+used, and not only those occurring in the polarized tweets as in the previous
+step. This allows to extend our analysis to the full set of topics discussed
+by the users, even if they were not captured in the early iterations of the
+algorithm.
+<!--l. 49--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Evaluation</h3>
+<!--l. 56--><p class="noindent" >We built an evaluation dataset by identifying those users whose opinion can be
+inferred with high confidence. During elections, as for other events, very specific
+hashtags are used over Twitter to express a strong intention of vote or an explicit
+membership in a group. We assume that users that frequently use one of such
+hashtags are strongly sided with one of the competing parties and they will not
+change idea in the short term. Such hashtags, named <span 
+class="cmti-10">golden hashtags</span>, were
+handpicked among the 500 most frequent in the data. The used golden hashtags are
+of the kind <span 
+class="cmtt-10">#i-vote-party</span>.
+<!--l. 66--><p class="indent" >   This evaluation dataset id used to evaluate the user classification accuracy of the
+proposed algorithm. Experimental results show that the <span 
+class="cmmi-10">F</span>-measure achieved by the
+proposed <span 
+class="cmcsc-10">PTR </span>provides an overall improvement w.r.t.&#x00A0;the <span 
+class="cmmi-10">k</span>-means baseline of +71%
+and +7% on datasets IT13 and EU14 respectively.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-3000"></a>References</h3>
+<a 
+ id="x1-3000doc"></a>
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xsigir16-polarized"></a>Mauro Coletto, Claudio Lucchese, Salvatore Orlando, and Raffaele Perego.
+   Polarized user and topic tracking in twitter. In <span 
+class="cmti-10">SIGIR &#8217;16: Proceedings of the</span>
+   <span 
+class="cmti-10">39th International ACM SIGIR Conference on Research and Development in</span>
+   <span 
+class="cmti-10">Information Retrieval</span>, 2016.
+</p>
+   </div>
+   </div>
+<!--l. 142--><p class="indent" >   <div class="sharingtools">Share on <a class="facebook" href="http://www.facebook.com/share.php?u=http://hpc.isti.cnr.it/~claudio/web/archives/20160331a/index.html"></a> <a class="twitter" href="https://twitter.com/intent/tweet?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160331a/index.html"></a> <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://hpc.isti.cnr.it/~claudio/web/archives/20160331a/index.html"></a> <a class="googleplus" href="https://plus.google.com/share?url=http://hpc.isti.cnr.it/~claudio/web/archives/20160331a/index.html"></a> </div> </div>  </div> <div class="copyright"><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Claudio Lucchese</span> <img src="../../images/cc-by.png"/> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a></div> 
+</body></html> 
+
+                                                                  
+
+
