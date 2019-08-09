@@ -259,10 +259,45 @@ class="cmti-10">Development in Information Retrieval</span>, 2016.
     </div>
    </div>
 </div>
-<!--l. 88--><p class="indent" >   <div id=newsentry>
+<!--l. 89--><p class="indent" >   <div id=newsentry>
    <h3 class="likesectionHead"><a 
- id="x1-7000"></a>Frequent Pattern Mining.</h3>
-<!--l. 91--><p class="noindent" >Frequent Pattern mining is one of the most typical data mining tasks. We attacked
+ id="x1-7000"></a>Adversarial Machine Learning.</h3>
+<!--l. 91--><p class="noindent" >Machine Learning (ML) is increasingly used in several applications and diﬀerent
+contexts. When ML is leveraged to ensure system security, such as in spam ﬁltering
+and intrusion detection, everybody acknowledges the need of training ML models
+resilient to adversarial manipulations. To date, research on adversarial ML has
+mostly focused on deep neural networks. Despite their eﬀectiveness in so called
+non-perceptual scenarios, decision tree ensembles have received only limited attention
+by the security and machine learning communities. We aim at ﬁlling this gap by
+investigating novel algorithms for robust ensemble learning as well as novel solutions
+for the evaluation of models&#x2019; robustness <span class="cite">[<a 
+href="#Xcikm19-adv">1</a>]</span>.
+   <div class="btSect">
+   <h3 class="likesectionHead"><a 
+ id="x1-8000"></a>References</h3>
+<a 
+ id="x1-8000doc"></a>
+    <div class="thebibliography">
+    <p class="bibitem" ><span class="biblabel">
+  [1]<span class="bibsp">   </span></span><a 
+ id="Xcikm19-adv"></a>Stefano Calzavara, Claudio Lucchese, and Gabriele Tolomei. Adversarial
+    training of gradient-boosted decision trees. In <span 
+class="cmti-10">CIKM &#x2019;19: Proceedings of the The</span>
+    <span 
+class="cmti-10">28th ACM International Conference on Information and Knowledge</span>
+    <span 
+class="cmti-10">Management</span>, 2019.
+</p>
+    </div>
+   </div>
+</div>
+<!--l. 98--><p class="indent" >   <div id=newsentry>
+                                                                  
+
+                                                                  
+   <h3 class="likesectionHead"><a 
+ id="x1-9000"></a>Frequent Pattern Mining.</h3>
+<!--l. 101--><p class="noindent" >Frequent Pattern mining is one of the most typical data mining tasks. We attacked
 the problem both by an eﬃciency and eﬃcacy side. Frequent pattern mining
 is computationally expensive. One of the algorithm we developed, named
 <span 
@@ -270,23 +305,23 @@ class="cmss-10">DCI</span><span
 class="cmss-10">_CLOSED</span>, in IEEE TKDE <span class="cite">[<a 
 href="#Xtkde06">8</a>]</span>, is still one of the eﬃciency benchmarks
 adopted.
-<!--l. 97--><p class="indent" >   A very interesting result was presented at ACM SIGKDD 2011 <span class="cite">[<a 
+<!--l. 107--><p class="indent" >   A very interesting result was presented at ACM SIGKDD 2011 <span class="cite">[<a 
 href="#Xkdd2011">1</a>]</span>: we showed
 that it is possible to extract relevant pattern with a single scan of the dataset by
 exploiting smart sampling strategies, thus allowing the mining of very large
 datasets.
-<!--l. 101--><p class="indent" >   We also developed out-of-core <span class="cite">[<a 
+<!--l. 111--><p class="indent" >   We also developed out-of-core <span class="cite">[<a 
 href="#Xsdm06">9</a>]</span>, multi-core<span class="cite">[<a 
 href="#Xicdm07">10</a>]</span>, and distributed pattern mining
 algorithms<span class="cite">[<a 
 href="#Xconc09">7</a>]</span>.
-<!--l. 103--><p class="indent" >   On the eﬃcacy side, we investigated a new methodology for extracting a minimal
+<!--l. 113--><p class="indent" >   On the eﬃcacy side, we investigated a new methodology for extracting a minimal
 and most informative set of patters by exploiting the Minimum Description Length
 principle. The proposed algorithm, published in IEEE TKDE <span class="cite">[<a 
 href="#Xtkde14">11</a>]</span>, improved over the
 state-of-the-art, also comparing with matrix decomposition techniques such as SVD
 and PCA.
-<!--l. 108--><p class="indent" >   On the same research line, we developed algorithms that allow the analyst to
+<!--l. 118--><p class="indent" >   On the same research line, we developed algorithms that allow the analyst to
 specify a set of properties (other than frequency) the desired patterns should satisfy
 <span class="cite">[<a 
 href="#Xdke07">6</a>, <a 
@@ -294,36 +329,36 @@ href="#Xis08">3</a>, <a
 href="#Xicde06">2</a>, <a 
 href="#Xkais06">5</a>, <a 
 href="#Xicdm04">4</a>]</span>.
-<!--l. 140--><p class="noindent" >
+<!--l. 150--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-8000"></a>Software</h4>
-<!--l. 142--><p class="noindent" >
+ id="x1-10000"></a>Software</h4>
+<!--l. 152--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-9000"></a><span 
+ id="x1-11000"></a><span 
 class="cmcsc-10">P<span 
 class="small-caps">a</span>ND<span 
 class="small-caps">a</span></span><span 
 class="cmr-7">+</span></h4>
-                                                                  
-
-                                                                  
-<!--l. 143--><p class="noindent" >This is the result of our work on mining patterns, in particular dense “rectangles”, in
+<!--l. 153--><p class="noindent" >This is the result of our work on mining patterns, in particular dense “rectangles”, in
 noisy binary datasets. The implementation of the TKDE&#x2019;14 paper <span class="cite">[<a 
 href="#Xtkde14">11</a>]</span> is available
 <a 
 href="./archives/20131113/index.html" >here</a>.
-<!--l. 145--><p class="noindent" >
+<!--l. 155--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-10000"></a>Direct Local Pattern Sampling</h4>
-<!--l. 146--><p class="noindent" >Published at KDD&#x2019;11 <span class="cite">[<a 
+ id="x1-12000"></a>Direct Local Pattern Sampling</h4>
+<!--l. 156--><p class="noindent" >Published at KDD&#x2019;11 <span class="cite">[<a 
 href="#Xkdd2011">1</a>]</span>, this is the result of a collaboration with M. Boley, Sandy
 Moens, Daniel Paurat and Thomas Gärtner from the University of Bonn.
 <a 
 href="http://www-kd.iai.uni-bonn.de/index.php?page=software_details&id=23" >website</a>.
-<!--l. 148--><p class="noindent" >
+<!--l. 158--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-11000"></a>DCI-Closed</h4>
-<!--l. 149--><p class="noindent" >This is the result of our work on Pattern Mining algorithm for the discovery of closed
+ id="x1-13000"></a>DCI-Closed</h4>
+                                                                  
+
+                                                                  
+<!--l. 159--><p class="noindent" >This is the result of our work on Pattern Mining algorithm for the discovery of closed
 frequent itemsets, in particular it implements three of our papers at ICDM&#x2019;07 <span class="cite">[<a 
 href="#Xicdm07">10</a>]</span>,
 TKDE&#x2019;06 <span class="cite">[<a 
@@ -332,31 +367,28 @@ href="#Xsdm06">9</a>]</span>, in one comprehensive software specialized for the
 dense datasets. In fact, it supports both out-of-core and multi-core mining.
 <a 
 href="./downloads/dci-closed.zip" >download</a>.
-<!--l. 151--><p class="noindent" >
+<!--l. 161--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-12000"></a>Find-Rules</h4>
-<!--l. 152--><p class="noindent" >This software generates association rules with given minimum conﬁdence
+ id="x1-14000"></a>Find-Rules</h4>
+<!--l. 162--><p class="noindent" >This software generates association rules with given minimum conﬁdence
 from a collection of frequent itemsets. Diﬀerently from others, it does not
 need a downward closed collection. It extracts all the possible association
 rules, without assuming that given a frequent itemset the supports of its
 subsets is known. The input format is the usual ascii format: 1 2 3 (95).
 <a 
 href="./downloads/rules.zip" >download</a>.
-<!--l. 154--><p class="noindent" >
+<!--l. 164--><p class="noindent" >
    <h4 class="likesubsectionHead"><a 
- id="x1-13000"></a>Logistic PCA</h4>
-<!--l. 155--><p class="noindent" >This is a porting to python of Andrew I. Schein&#x2019;s matlab code from the paper “A
+ id="x1-15000"></a>Logistic PCA</h4>
+<!--l. 165--><p class="noindent" >This is a porting to python of Andrew I. Schein&#x2019;s matlab code from the paper “A
 Generalized Linear Model for Principal Component Analysis of Binary Data”.
 <a 
 href="./downloads/lpca.py" >download</a>.
    <div class="btSect">
    <h3 class="likesectionHead"><a 
- id="x1-14000"></a>References</h3>
+ id="x1-16000"></a>References</h3>
 <a 
- id="x1-14000doc"></a>
-                                                                  
-
-                                                                  
+ id="x1-16000doc"></a>
     <div class="thebibliography">
     <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
@@ -378,6 +410,9 @@ class="cmti-10">ICDE &#x2019;06: Proceedings of the 2006</span>
     <span 
 class="cmti-10">IEEE International Conference on Data Engineering (Demo)</span>, pages 159–160,
     2006.
+                                                                  
+
+                                                                  
     </p>
     <p class="bibitem" ><span class="biblabel">
   [3]<span class="bibsp">   </span></span><a 
@@ -417,9 +452,6 @@ class="cmti-10">Data and Knowledge Engineering</span>,
 class="cmti-10">Concurrency and Computation: Practice and</span>
     <span 
 class="cmti-10">Experience</span>, 22(5):658–682, 2010.
-                                                                  
-
-                                                                  
     </p>
     <p class="bibitem" ><span class="biblabel">
   [8]<span class="bibsp">   </span></span><a 
@@ -437,6 +469,9 @@ class="cmti-10">SDM &#x2019;06: Proceedings of the third SIAM</span>
     <span 
 class="cmti-10">International Conference on Data Mining</span>, April 2006.
     </p>
+                                                                  
+
+                                                                  
     <p class="bibitem" ><span class="biblabel">
  [10]<span class="bibsp">   </span></span><a 
  id="Xicdm07"></a>Claudio Lucchese, Salvatore Orlando, and Raﬀaele Perego. Parallel mining of
@@ -457,10 +492,10 @@ class="cmti-10">On Knowledge and Data Engineering</span>, 26(12):2900–2913, 20
     </div>
    </div>
 </div>
-<!--l. 160--><p class="indent" >   <div id=newsentry>
+<!--l. 170--><p class="indent" >   <div id=newsentry>
    <h3 class="likesectionHead"><a 
- id="x1-15000"></a>Entity Linking for Document Understanding.</h3>
-<!--l. 162--><p class="noindent" >Entity Linking is the task of identifying named entities (places, people, concepts,
+ id="x1-17000"></a>Entity Linking for Document Understanding.</h3>
+<!--l. 172--><p class="noindent" >Entity Linking is the task of identifying named entities (places, people, concepts,
 etc.) mentioned in a given piece of text. We developed a framework for the
 annotation and evaluation of Entity Linking Algorithms <span class="cite">[<a 
 href="#Xcikm14">3</a>, <a 
@@ -469,7 +504,7 @@ for the estimation of entity correlation <span class="cite">[<a
 href="#Xcikm13">1</a>]</span>. Indeed, as entity correlation is the
 building block of most approaches, we showed how to improve the accuracy of several
 state-of-the-art algorithms.
-<!--l. 169--><p class="indent" >   Finally, we developed a new Entity Linking method<span class="cite">[<a 
+<!--l. 179--><p class="indent" >   Finally, we developed a new Entity Linking method<span class="cite">[<a 
 href="#Xdoceng16-sel">4</a>]</span>, named <span 
 class="cmcsc-10">SEL</span>, aiming at
 estimating the relevance of the mentioned entities and to improve the accuracy in the
@@ -477,13 +512,10 @@ detection of the most relevant ones, with a 2x F-measure improvement w.r.t. to 
 state of the art. This work was awarded the Best Student Paper at DocEnc
 2016.
    <div class="btSect">
-                                                                  
-
-                                                                  
    <h3 class="likesectionHead"><a 
- id="x1-16000"></a>References</h3>
+ id="x1-18000"></a>References</h3>
 <a 
- id="x1-16000doc"></a>
+ id="x1-18000doc"></a>
     <div class="thebibliography">
     <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
@@ -494,6 +526,9 @@ class="cmti-10">CIKM &#x2019;13:</span>
 class="cmti-10">Proceedings of the 22st ACM international conference on Information and</span>
     <span 
 class="cmti-10">knowledge management</span>, 2013.
+                                                                  
+
+                                                                  
     </p>
     <p class="bibitem" ><span class="biblabel">
   [2]<span class="bibsp">   </span></span><a 
@@ -526,10 +561,10 @@ class="cmti-10">Document Engineering</span>, 2016.
     </div>
    </div>
 </div>
-<!--l. 188--><p class="indent" >   <div id=newsentry>
+<!--l. 198--><p class="indent" >   <div id=newsentry>
    <h3 class="likesectionHead"><a 
- id="x1-17000"></a>Large-scale Data Mining.</h3>
-<!--l. 190--><p class="noindent" >We discuss two major results. In <span class="cite">[<a 
+ id="x1-19000"></a>Large-scale Data Mining.</h3>
+<!--l. 200--><p class="noindent" >We discuss two major results. In <span class="cite">[<a 
 href="#Xtpds16">2</a>]</span> we developed a new algorithm, named <span 
 class="cmcsc-10">C<span 
 class="small-caps">r</span><span 
@@ -540,22 +575,22 @@ class="small-caps">e</span><span
 class="small-caps">r</span></span>,
 for the detection of connected components in very large graphs. The proposed
 algorithm, implemented over Spark, is able to process billions nodes and hundreds
-                                                                  
-
-                                                                  
 billions arcs, with a speed-up factor in the rage 1.6x–15x over the state of the
 art.
-<!--l. 195--><p class="indent" >   In <span class="cite">[<a 
+<!--l. 205--><p class="indent" >   In <span class="cite">[<a 
 href="#Xicdm10">1</a>]</span> we tackled the self-join similarity in large document collections. The
 proposed MapReduce algorithm exhibits a speed-up w.r.t. the state of the art in the
 range 2x–5x.
-<!--l. 199--><p class="indent" >   In both works, we adopted a common approach based on the pruning non
+<!--l. 209--><p class="indent" >   In both works, we adopted a common approach based on the pruning non
 informative data in order to reduce the computational cost of the algorithms.
    <div class="btSect">
    <h3 class="likesectionHead"><a 
- id="x1-18000"></a>References</h3>
+ id="x1-20000"></a>References</h3>
+                                                                  
+
+                                                                  
 <a 
- id="x1-18000doc"></a>
+ id="x1-20000doc"></a>
     <div class="thebibliography">
     <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
@@ -577,29 +612,26 @@ class="cmti-10">IEEE Transactions on Parallel and Distributed Systems</span>, 28
     </div>
    </div>
 </div>
-<!--l. 216--><p class="indent" >   <div id=newsentry>
+<!--l. 226--><p class="indent" >   <div id=newsentry>
    <h3 class="likesectionHead"><a 
- id="x1-19000"></a>Web Mining.</h3>
-<!--l. 218--><p class="noindent" >One relevant achievement, awarded <span 
+ id="x1-21000"></a>Web Mining.</h3>
+<!--l. 228--><p class="noindent" >One relevant achievement, awarded <span 
 class="cmti-10">ACM Notable Article</span>, focuses on Web search
 engines&#x2019; query log mining. We developed a novel method that allows to cluster users&#x2019;
 queries into tasks and missions (e.g., planning a holiday trip) thus allowing a better
 user intent understanding <span class="cite">[<a 
 href="#Xtois13">2</a>, <a 
 href="#Xwsdm11">1</a>]</span>.
-<!--l. 222--><p class="indent" >   Finally, we developed a novel personalized news recommendation algorithm that
+<!--l. 232--><p class="indent" >   Finally, we developed a novel personalized news recommendation algorithm that
 exploits social network data by analyzing the tweets of a user and his social circles to
 recommend the most items published by news agencies being most relevant for the
 given user <span class="cite">[<a 
 href="#Xwsdm2012">3</a>]</span>.
    <div class="btSect">
-                                                                  
-
-                                                                  
    <h3 class="likesectionHead"><a 
- id="x1-20000"></a>References</h3>
+ id="x1-22000"></a>References</h3>
 <a 
- id="x1-20000doc"></a>
+ id="x1-22000doc"></a>
     <div class="thebibliography">
     <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
@@ -608,6 +640,9 @@ href="#Xwsdm2012">3</a>]</span>.
     <span 
 class="cmti-10">WSDM &#x2019;11: ACM International Conference on Web Search and Data Mining</span>,
     February 2011. (best 6).
+                                                                  
+
+                                                                  
     </p>
     <p class="bibitem" ><span class="biblabel">
   [2]<span class="bibsp">   </span></span><a 
